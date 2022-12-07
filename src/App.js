@@ -1,7 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom"; 
-import CreateProject from "./components/CreateProject";
- 
+import { Routes, Route } from "react-router-dom";  
 import Navbar from "./components/Navbar";     
 
 import ProjectList from "./components/ProjectList";     
