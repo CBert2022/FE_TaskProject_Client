@@ -9,7 +9,6 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <CreateProject />
       <Routes>      
         <Route path="/" element={ <ProjectList /> } />
       </Routes>
