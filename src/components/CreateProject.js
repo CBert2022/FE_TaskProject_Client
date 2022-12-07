@@ -3,7 +3,7 @@ import axios from "axios";
  
 const API_URL = "http://localhost:5005";
  
-function CreateProject(props) {
+function CreateProject({refresh}) {
   const [title, setTitle] = useState("");
 
   const handleSubmit = (e) => {                          
@@ -15,6 +15,7 @@ function CreateProject(props) {
       .then((response) => {
         // Reset the state
         setTitle("");
+        refresh()
       })
       .catch((error) => console.log(error));
   };
