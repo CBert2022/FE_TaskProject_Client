@@ -4,6 +4,7 @@ import CreateProject from "./components/CreateProject";
  
 import Navbar from "./components/Navbar";     
 import ProjectList from "./components/ProjectList";     
+import CreateTask from "./components/CreateTask";
  
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>      
         <Route path="/" element={ <ProjectList /> } />
       </Routes>
+      <CreateTask />
 
     </div>
   );
