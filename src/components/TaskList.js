@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-/* import CreateTask from "./CreateTask"; */
  
 const API_URL = "http://localhost:5005";
 
@@ -22,7 +21,8 @@ function TaskListPage() {
     tasks && console.log(tasks)
     
     return (
-      <div className="ProjectListPage">
+        <div></div>
+/*       <div className="ProjectListPage">
         
           {tasks && tasks.map((task) => {
             return (
@@ -31,11 +31,8 @@ function TaskListPage() {
               </div>
             );
           })}    
-          <div>
-{/*           <CreateTask /> */}
-          </div> 
       </div>
-
+ */
     );
   }
    
