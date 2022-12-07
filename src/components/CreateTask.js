@@ -7,11 +7,12 @@ function CreateTask(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState ("")
+  const [important, setImportant] = useState(false)
 
   const handleSubmit = (e) => {                          
     e.preventDefault();
  
-    const requestBody = { title, description, dueDate };
+    const requestBody = { title, description, dueDate, important };
     axios
       .post(`${API_URL}/api/tasks`, requestBody)
       .then((response) => {
@@ -19,6 +20,7 @@ function CreateTask(props) {
         setTitle("");
         setDescription("");
         setDueDate("")
+        setImportant(false)
       })
       .catch((error) => console.log(error));
   };
@@ -45,8 +47,21 @@ function CreateTask(props) {
           onChange={(e) => setDescription(e.target.value)}
         />
 
-        <label for="date">Due date: </label>
-        <input type="datetime-local" name="date" />
+        <label for="dueDate">Due date: </label>
+        <input type="datetime-local" 
+        name="dueDate" 
+        value={dueDate}
+        onChange={(e) => setDueDate(e.target.value)}
+        />
+
+        <label for="important">Important</label>
+        <input type="checkbox" 
+        id="important" 
+        name="important" 
+        value={important}
+        onChange={(e) => setImportant(!important)}
+         
+        />
 
         <button type="submit">Submit</button>
       </form>
