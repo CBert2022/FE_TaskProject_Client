@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import CreateProject from "./CreateProject";
  
 const API_URL = "http://localhost:5005";
 
@@ -29,8 +30,12 @@ function ProjectListPage() {
                   <h3>{project.title}</h3>
               </div>
             );
-          })}     
+          })}    
+          <div>
+          <CreateProject />
+          </div> 
       </div>
+
     );
   }
    
