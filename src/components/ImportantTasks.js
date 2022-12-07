@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
  
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
 function ImportantTask() {
     const [importantTasks, setimportantTasks] = useState([]);
