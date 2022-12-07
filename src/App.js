@@ -5,19 +5,20 @@ import ProjectList from "./components/ProjectList";
 import CreateTask from "./components/CreateTask";
 import TaskList from "./components/TaskList";  
 import QuickEntryTask from "./components/QuickEntryTask"
-
+import ImportantTask from "./components/ImportantTasks";
  
 function App() {
   return (
     <div className="App">
       <Navbar />
       <TaskList/>
-      <Routes>      
+       <Routes>      
         <Route path="/" element={ <ProjectList /> } />
         <Route path="/" element={ <TaskList /> } />
       </Routes>
       <QuickEntryTask />
       <CreateTask />
+      <ImportantTask />
 
     </div>
   );
