@@ -3,7 +3,7 @@ import axios from "axios";
  
 const API_URL = "http://localhost:5005";
  
-function CreateProject(props) {
+function QuickEntryTask(props) {
   const [title, setTitle] = useState("");
 
   const handleSubmit = (e) => {                          
@@ -11,7 +11,7 @@ function CreateProject(props) {
  
     const requestBody = { title };
     axios
-      .post(`${API_URL}/api/projects`, requestBody)
+      .post(`${API_URL}/api/tasks`, requestBody)
       .then((response) => {
         // Reset the state
         setTitle("");
@@ -22,7 +22,7 @@ function CreateProject(props) {
  
   return (
     <div className="AddProject">
-      <h3>Add Project</h3>
+      <h3>Add Task</h3>
  
       <form onSubmit={handleSubmit}>
         <input
@@ -38,4 +38,4 @@ function CreateProject(props) {
   );
 }
  
-export default CreateProject;
+export default QuickEntryTask;
