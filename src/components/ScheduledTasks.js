@@ -24,6 +24,14 @@ function ScheduledTask() {
           .catch((error) => console.log(error));
       };
 
+      const deleteTask = (id) => {
+        console.log("delete called")
+        axios
+          .post(`${API_URL}/api/tasks/${id}/delete`)
+          .then(() => getAllScheduledTasks())
+          .catch((error) => console.log(error));
+      };
+
       useEffect(() => {
         getAllScheduledTasks();
       }, [] );
@@ -41,6 +49,7 @@ function ScheduledTask() {
               return (
                 <div className="TaskCard card" key={scheduledTask._id} >
                   <h3>SCHEDUELD:{scheduledTask.title}</h3>
+                  <button onClick={()=>deleteTask(scheduledTask._id)}  > Delete </button>
                 </div>
               );
             })}    
