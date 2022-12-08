@@ -25,6 +25,7 @@ function CreateTask({projectId, refresh}) {
         setDueDate("")
         setImportant(false)
         console.log(important)
+        refresh()
       })
       .catch((error) => console.log(error));
   };

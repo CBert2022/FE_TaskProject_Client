@@ -6,23 +6,24 @@ import { Link } from "react-router-dom";
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
-function ScheduledTask() {
+function ScheduledTask({allProjects}) {
     const [scheduledTasks, setScheduledTasks] = useState([]);
     const [isShown, setIsShown] = useState();
     console.log(isShown)
 
-    const getAllScheduledTasks = () => {
-        axios
-          .get(`${API_URL}/api/tasks`)
-          .then((response) => {
-            console.log(response.data[0].dueDate)
-            let scheduledTasks = response.data.filter((task)=>{
-                return task.dueDate 
-    
+      const getAllScheduledTasks = () => {
+/*         const today = new Date().toISOString()
+        const newDate = today + 86400000
+         console.log(newDate) */
+        allProjects.map((project)=>{
+         const x = project.tasks.filter((task)=> {
+          return task.dueDate 
+          /* task.dueDate >= newDate */
           })
-          setScheduledTasks(scheduledTasks)})
-          .catch((error) => console.log(error));
-      };
+          setScheduledTasks(x)
+  
+        })
+        };
 
       const deleteTask = (id) => {
         console.log("delete called")
@@ -34,7 +35,7 @@ function ScheduledTask() {
 
       useEffect(() => {
         getAllScheduledTasks();
-      }, [] );
+      }, [allProjects] );
 
       scheduledTasks && console.log(scheduledTasks)
 
@@ -49,6 +50,7 @@ function ScheduledTask() {
               return (
                 <div className="TaskCard card" key={scheduledTask._id} >
                   <h3>SCHEDUELD:{scheduledTask.title}</h3>
+                  <h3>{scheduledTask.dueDate}</h3>
                   <button onClick={()=>deleteTask(scheduledTask._id)}  > Delete </button>
                 </div>
               );

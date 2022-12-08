@@ -7,23 +7,20 @@ import { Link } from "react-router-dom";
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
 
-function ImportantTask(props) {
+function ImportantTask({allProjects}) {
     const [importantTasks, setimportantTasks] = useState([]);
-    const [isShown, setIsShown] = useState();
+    const [isShown, setIsShown] = useState(false);
     console.log(isShown)
 
     const getAllImTasks = () => {
-        axios
-          .get(`${API_URL}/api/tasks`)
-          .then((response) => {
-            console.log(response.data[0].important)
-        
-            let imporatantTasks = response.data.filter((task)=>{
-                return task.important 
-    
-          })
-            setimportantTasks(imporatantTasks)})
-          .catch((error) => console.log(error));
+
+      allProjects.map((project)=>{
+       const x = project.tasks.filter((task)=> {
+        return task.important 
+        })
+        setimportantTasks(x)
+
+      })
       };
 
       const deleteTask = (id) => {
@@ -36,7 +33,7 @@ function ImportantTask(props) {
 
       useEffect(() => {
         getAllImTasks();
-      }, [] );
+      },[allProjects]);
 
       importantTasks && console.log(importantTasks)
 

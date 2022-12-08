@@ -8,8 +8,6 @@ function AddTask (props) {
     const [title, setTitle]= useState("")
     const [description, setDescription]= useState("")
     const [dueDate, setDueDate]= useState(0)
-
-    
 }
 
 export default AddTask
