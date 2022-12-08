@@ -1,25 +1,21 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";  
 import Navbar from "./components/Navbar";     
-import ProjectList from "./components/ProjectList";     
-import CreateTask from "./components/CreateTask";
-import TaskList from "./components/TaskList";  
-import QuickEntryTask from "./components/QuickEntryTask"
-import ImportantTask from "./components/ImportantTasks";
-import ScheduledTask from "./components/ScheduledTasks";
+import SignupPage from "./pages/SignupPage";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import IsPrivate from "./components/IsPrivate";
 
  
 function App() {
   return (
     <div className="App">
       <Navbar />
-
-      <ImportantTask />
-      <ScheduledTask />
-       <Routes>      
-        <Route path="/" element={ <ProjectList /> } />
+        <Routes>      
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={ <IsPrivate> <HomePage /> </IsPrivate> } />
       </Routes>
-      <CreateTask />
     </div>
   );
 }
