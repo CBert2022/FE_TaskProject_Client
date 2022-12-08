@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
 function ImportantTask() {
-    const [importantTasks, setimportantTasks] = useState([]);
+    const [importantTasks, setimportantTasks] = useState();
     const [isShown, setIsShown] = useState();
     console.log(isShown)
 
@@ -16,6 +16,7 @@ function ImportantTask() {
           .get(`${API_URL}/api/tasks`)
           .then((response) => {
             console.log(response.data[0].important)
+        
             let imporatantTasks = response.data.filter((task)=>{
                 return task.important 
     

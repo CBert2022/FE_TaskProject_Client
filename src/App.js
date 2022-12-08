@@ -6,6 +6,8 @@ import CreateTask from "./components/CreateTask";
 import TaskList from "./components/TaskList";  
 import QuickEntryTask from "./components/QuickEntryTask"
 import ImportantTask from "./components/ImportantTasks";
+import ScheduledTask from "./components/ScheduledTasks";
+
  
 function App() {
   return (
@@ -18,7 +20,7 @@ function App() {
       <QuickEntryTask />
       <CreateTask />
       <ImportantTask />
-
+      <ScheduledTask />
     </div>
   );
 }

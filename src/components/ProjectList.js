@@ -28,10 +28,9 @@ function ProjectListPage() {
       .then(() => getAllProjects())
       .catch((error) => console.log(error));
   };
-   
 
   useEffect(() => {
-    console.log("hahaahahah")
+    console.log("works")
     getAllProjects();
   }, [] );
    
