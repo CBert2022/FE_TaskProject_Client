@@ -15,14 +15,13 @@ function ScheduledTask({allProjects}) {
 /*         const today = new Date().toISOString()
         const newDate = today + 86400000
          console.log(newDate) */
-        allProjects.map((project)=>{
+   /*      allProjects.map((project)=>{
          const x = project.tasks.filter((task)=> {
           return task.dueDate 
-          /* task.dueDate >= newDate */
           })
           setScheduledTasks(x)
   
-        })
+        }) */
         };
 
       const deleteTask = (id) => {
@@ -46,7 +45,7 @@ function ScheduledTask({allProjects}) {
                 Scheduled Tasks
               </Link>
         </div>
-            {isShown && scheduledTasks.map((scheduledTask) => {
+           {/*  {isShown && scheduledTasks.map((scheduledTask) => {
               return (
                 <div className="TaskCard card" key={scheduledTask._id} >
                   <h3>SCHEDUELD:{scheduledTask.title}</h3>
@@ -54,7 +53,7 @@ function ScheduledTask({allProjects}) {
                   <button onClick={()=>deleteTask(scheduledTask._id)}  > Delete </button>
                 </div>
               );
-            })}    
+            })}   */}  
         </>
       );
 }

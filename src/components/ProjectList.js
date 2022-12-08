@@ -65,10 +65,6 @@ function ProjectListPage({projects, getAllProjects}) {
         );
       })}  
 
-      <div>
-      <CreateProject refresh={getAllProjects}/>
-      </div> 
-
 
 
     </div>
