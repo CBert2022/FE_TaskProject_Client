@@ -3,10 +3,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Routes, Route } from "react-router-dom";  
 import Navbar from "./components/Navbar";     
-import ProjectList from "./components/ProjectList";     
-import CreateTask from "./components/CreateTask";
-import ImportantTask from "./components/ImportantTasks";
-import ScheduledTask from "./components/ScheduledTasks";
+import SignupPage from "./pages/SignupPage";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import IsPrivate from "./components/IsPrivate";
+
 
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
@@ -28,12 +29,11 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <ImportantTask allProjects={projects}/>
-      <ScheduledTask allProjects={projects}/>
-       <Routes>      
-        <Route path="/" element={ <ProjectList projects={projects} getAllProjects={getAllProjects}/> } />
+        <Routes>      
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={ <IsPrivate> <HomePage /> </IsPrivate> } />
       </Routes>
-      <CreateTask />
     </div>
   );
 }
