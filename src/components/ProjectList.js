@@ -30,6 +30,15 @@ function ProjectListPage() {
       .catch((error) => console.log(error));
   };
 
+  const deleteProject = (id) => {
+    console.log("delete project called")
+    axios 
+    .post(`${API_URL}/api/projects/${id}/delete`)
+    .then(() => getAllProjects())
+    .catch((error) => console.log(error));
+  }
+
+
   useEffect(() => {
     console.log("works")
     getAllProjects();
@@ -48,6 +57,7 @@ function ProjectListPage() {
               <Link onClick={() => setIsShown(project._id)}> 
                 <h3>{project.title}</h3>
               </Link>
+              <button onClick={()=>deleteProject(project._id)}  > Delete </button> 
             </div>
 
             <div>
