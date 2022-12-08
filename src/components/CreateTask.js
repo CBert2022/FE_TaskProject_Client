@@ -11,19 +11,20 @@ function CreateTask({projectId, refresh}) {
 
   const handleSubmit = (e) => {                          
     e.preventDefault();
+    console.log(important)
  
     const requestBody = { title, description, dueDate, projectId, important };
 
     axios
       .post(`${API_URL}/api/tasks`, requestBody)
       .then((response) => {
+        console.log("response")
         // Reset the state
         setTitle("");
         setDescription("");
         setDueDate("")
-        refresh()
         setImportant(false)
-
+        console.log(important)
       })
       .catch((error) => console.log(error));
   };
@@ -61,12 +62,11 @@ function CreateTask({projectId, refresh}) {
         <input type="checkbox" 
         id="important" 
         name="important" 
-        value={important}
+        checked={important}
         onChange={(e) => setImportant(!important)}
-         
         />
 
-        <button type="submit">Submit</button>
+        <button type="submit" >Submit</button>
       </form>
     </div>
   );
