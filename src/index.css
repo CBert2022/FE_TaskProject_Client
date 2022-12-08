@@ -52,7 +52,7 @@ textarea {
   margin: 0 auto;
   margin-bottom: 20px;
   background: #a2f2b1;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
  
@@ -89,4 +89,8 @@ textarea {
  
 .TaskCard {
   background-color: #dfeef9;
+}
+
+.ImportantCard {
+  background-color: #efb5be;
 }
