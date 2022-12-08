@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
-function ImportantTask() {
+function ImportantTask(props) {
     const [importantTasks, setimportantTasks] = useState([]);
     const [isShown, setIsShown] = useState();
     console.log(isShown)
@@ -21,6 +21,14 @@ function ImportantTask() {
     
           })
             setimportantTasks(imporatantTasks)})
+          .catch((error) => console.log(error));
+      };
+
+      const deleteTask = (id) => {
+        console.log("delete called")
+        axios
+          .post(`${API_URL}/api/tasks/${id}/delete`)
+          .then(() => getAllImTasks())
           .catch((error) => console.log(error));
       };
 
@@ -41,6 +49,7 @@ function ImportantTask() {
               return (
                 <div className="TaskCard card" key={importantTask._id} >
                   <h3>IMPORTANT:{importantTask.title}</h3>
+                  <button onClick={()=>deleteTask(importantTask._id)}  > Delete </button>
                 </div>
               );
             })}    
