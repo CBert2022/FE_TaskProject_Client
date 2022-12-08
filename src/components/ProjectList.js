@@ -3,6 +3,7 @@ import axios from "axios";
 import CreateProject from "./CreateProject";
 import CreateTask from "./CreateTask";
 import { Link } from "react-router-dom";
+import TaskListPage from "./TaskList";
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
@@ -11,21 +12,26 @@ function ProjectListPage() {
   const [isShown, setIsShown] = useState("")
    
   const getAllProjects = () => {
+    console.log("get projects called")
     axios
       .get(`${API_URL}/api/projects`)
       .then((response) => setProjects(response.data))
       .catch((error) => console.log(error));
   };
 
-  const deleteProject = (id) => {
+  console.log("rendering")
+
+  const deleteTask = (id) => {
+    console.log("delete called")
     axios
       .post(`${API_URL}/api/tasks/${id}/delete`)
-      .then((response) => setProjects(response.data))
+      .then(() => getAllProjects())
       .catch((error) => console.log(error));
   };
    
 
   useEffect(() => {
+    console.log("hahaahahah")
     getAllProjects();
   }, [] );
    
@@ -39,28 +45,14 @@ function ProjectListPage() {
           <>
 
             <div className="ProjectCard card" key={project._id} >
-              {/* <Link to={`/projects/${project._id}`}> */}
               <Link onClick={() => setIsShown(project._id)}> 
                 <h3>{project.title}</h3>
               </Link>
             </div>
 
             <div>
-              
-             {isShown === project._id && project.tasks && project.tasks.map((task) => {
-                return (
-                  <>
-                  <div className="TaskCard card" key={task._id} >
-                    <h3>{task.title}</h3>
-                    <h4>{project._id}</h4>
-                    <button onClick={()=>deleteProject(task._id)} > Delete </button> 
-                  </div>
-                  
-                
-                </>
-                )
-              })}
 
+              <TaskListPage project={project} isShown={isShown} deleteTask={deleteTask}/>
                
             </div>
 

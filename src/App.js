@@ -14,7 +14,6 @@ function App() {
       <TaskList/>
        <Routes>      
         <Route path="/" element={ <ProjectList /> } />
-        <Route path="/" element={ <TaskList /> } />
       </Routes>
       <QuickEntryTask />
       <CreateTask />
