@@ -1,51 +1,21 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
- 
-const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
-
-function TaskListPage() {
-    const [tasks, setTasks] = useState([]);
-   
-    const getAllTasks = () => {
-      axios
-        .get(`${API_URL}/api/tasks`)
-        .then((response) => setTasks(response.data))
-        .catch((error) => console.log(error));
-    };
-   
-    
-    useEffect(() => {
-      getAllTasks();
-    }, [] );
-   
-    tasks && console.log(tasks)
+function TaskListPage(props) {
     
     return (
-        <div></div>
-/*       <div className="ProjectListPage">
-        
-          {tasks && tasks.map((task) => {
-            return (
-              <div className="TaskCard card" key={task._id} >
-                  <h3>{task.title}</h3>
-              </div>
-            );
-          })}    
-      </div>
- */
+        <div>
+             {props.isShown === props.project?._id && props.project?.tasks && props.project?.tasks.map((task) => {
+                return (
+                  <>
+                  <div className="TaskCard card" key={task._id} >
+                    <h3>{task.title}</h3>
+                    <button onClick={()=>props.deleteTask(task._id)}  > Delete </button> 
+                  </div>
+                  
+                
+                </>
+                )
+              })}
+        </div>
     );
   }
    
   export default TaskListPage;
-
-
-/*   
-
-{project. tasks && project.tasks.map((task) => {
-return (<div className="TaskCard card" key={task._id} >
-<h3>{task.title}</h3>
-<h4>{project._id}</h4>
-</div>)
-})} 
-
-*/
