@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import CreateProject from "./CreateProject";
 import CreateTask from "./CreateTask";
+import QuickEntryTask from "./QuickEntryTask";
 import { Link } from "react-router-dom";
 import TaskListPage from "./TaskList";
  
@@ -55,6 +56,7 @@ function ProjectListPage() {
                
             </div>
 
+            {isShown === project._id && <div><QuickEntryTask projectId={project._id} refresh={getAllProjects}/></div>}
             {isShown === project._id && <div><CreateTask projectId={project._id} refresh={getAllProjects}/></div> }
 
           </>
@@ -64,6 +66,8 @@ function ProjectListPage() {
       <div>
       <CreateProject refresh={getAllProjects}/>
       </div> 
+
+
 
     </div>
   );

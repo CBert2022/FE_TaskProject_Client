@@ -13,11 +13,11 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <TaskList/>
+
+      <ImportantTask />
        <Routes>      
         <Route path="/" element={ <ProjectList /> } />
       </Routes>
-      <QuickEntryTask />
       <CreateTask />
       <ImportantTask />
       <ScheduledTask />
