@@ -12,18 +12,18 @@ function ImportantTask({allProjects}) {
     const [isShown, setIsShown] = useState(false);
     console.log(isShown)
 
-    const getAllImTasks = () => {
-
+/*     const getAllImTasks = () => {
       allProjects.map((project)=>{
-       const x = project.tasks.filter((task)=> {
-        return task.important 
+       const ImpTasks = project.tasks.filter((task)=> {
+        return task.important
         })
-        setimportantTasks(x)
+        setimportantTasks(ImpTasks)
+        console.log("HEREHEREHERE", ImpTasks)
 
       })
       };
-
-      const deleteTask = (id) => {
+ */
+/*       const deleteTask = (id) => {
         console.log("delete called")
         axios
           .post(`${API_URL}/api/tasks/${id}/delete`)
@@ -33,7 +33,7 @@ function ImportantTask({allProjects}) {
 
       useEffect(() => {
         getAllImTasks();
-      },[allProjects]);
+      },[allProjects]); */
 
       importantTasks && console.log(importantTasks)
 
@@ -44,14 +44,14 @@ function ImportantTask({allProjects}) {
                 Important Tasks
               </Link>
         </div>
-            {isShown && importantTasks.map((importantTask) => {
+        {/*     {isShown && importantTasks.map((importantTask) => {
               return (
                 <div className="TaskCard card" key={importantTask._id} >
                   <h3>IMPORTANT:{importantTask.title}</h3>
                   <button onClick={()=>deleteTask(importantTask._id)}  > Delete </button>
                 </div>
               );
-            })}    
+            })}  */}   
         </>
       );
 }
