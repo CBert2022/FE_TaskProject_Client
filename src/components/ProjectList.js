@@ -8,17 +8,9 @@ import TaskListPage from "./TaskList";
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
-function ProjectListPage() {
-  const [projects, setProjects] = useState([]);
+function ProjectListPage({projects, getAllProjects}) {
   const [isShown, setIsShown] = useState("")
    
-  const getAllProjects = () => {
-    console.log("get projects called")
-    axios
-      .get(`${API_URL}/api/projects`)
-      .then((response) => setProjects(response.data))
-      .catch((error) => console.log(error));
-  };
 
   console.log("rendering")
 
