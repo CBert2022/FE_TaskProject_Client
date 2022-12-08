@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+
+
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
 function ImportantTask() {
     const [importantTasks, setimportantTasks] = useState([]);
+    const [isShown, setIsShown] = useState();
+    console.log(isShown)
 
     const getAllImTasks = () => {
         axios
@@ -24,23 +28,23 @@ function ImportantTask() {
         getAllImTasks();
       }, [] );
 
-    //   importantTasks && console.log(importantTasks)
+      importantTasks && console.log(importantTasks)
 
       return (
-        <div >
-          
-            {importantTasks.map((importantTask) => {
+        <>
+        <div className="ImportantCard card">
+              <Link onClick={() => setIsShown(!isShown)}>
+                Important Tasks
+              </Link>
+        </div>
+            {isShown && importantTasks.map((importantTask) => {
               return (
-                <div className="ProjectCard card" key={importantTask._id} >
-                <Link to={`/tasks/${importantTask._id}`}>
-
+                <div className="TaskCard card" key={importantTask._id} >
                   <h3>IMPORTANT:{importantTask.title}</h3>
-                </Link>
                 </div>
               );
             })}    
-        </div>
-  
+        </>
       );
 }
 
