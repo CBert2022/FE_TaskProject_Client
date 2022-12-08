@@ -15,12 +15,11 @@ function App() {
       <Navbar />
 
       <ImportantTask />
+      <ScheduledTask />
        <Routes>      
         <Route path="/" element={ <ProjectList /> } />
       </Routes>
       <CreateTask />
-      <ImportantTask />
-      <ScheduledTask />
     </div>
   );
 }
