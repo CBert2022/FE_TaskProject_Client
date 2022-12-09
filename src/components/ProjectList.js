@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import CreateProject from "./CreateProject";
 import CreateTask from "./CreateTask";
 import QuickEntryTask from "./QuickEntryTask";
 import { Link } from "react-router-dom";
@@ -8,22 +7,10 @@ import TaskListPage from "./TaskList";
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
-function ProjectListPage({projects, getAllProjects}) {
+function ProjectListPage({projects, getAllProjects, deleteTask}) {
   const [isShown, setIsShown] = useState("")
-   
-
-  console.log("rendering")
-
-  const deleteTask = (id) => {
-    console.log("delete called")
-    axios
-      .post(`${API_URL}/api/tasks/${id}/delete`)
-      .then(() => getAllProjects())
-      .catch((error) => console.log(error));
-  };
 
   const deleteProject = (id) => {
-    console.log("delete project called")
     axios 
     .post(`${API_URL}/api/projects/${id}/delete`)
     .then(() => getAllProjects())
@@ -32,11 +19,8 @@ function ProjectListPage({projects, getAllProjects}) {
 
 
   useEffect(() => {
-    console.log("works")
     getAllProjects();
   }, [] );
-   
-  projects && console.log(projects)
     
   return (
     <div className="ProjectListPage">

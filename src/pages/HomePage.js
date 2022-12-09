@@ -1,4 +1,4 @@
-import CreateTask from "../components/CreateTask";
+/* import CreateTask from "../components/CreateTask"; */
 import ImportantTask from "../components/ImportantTasks";
 import ScheduledTask from "../components/ScheduledTasks";
 import ProjectList from "../components/ProjectList"
@@ -11,26 +11,40 @@ const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
 function HomePage() {
   const [projects, setProjects] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   const getAllProjects = () => {
-    console.log("get projects called")
     axios
       .get(`${API_URL}/api/projects`)
       .then((response) => setProjects(response.data))
       .catch((error) => console.log(error));
   };
 
+  const getAllTasks = () => {
+    axios
+      .get(`${API_URL}/api/tasks`)
+      .then((response) => setTasks(response.data))
+      .catch((error) => console.log(error));
+  }
+
   useEffect(()=>{
     getAllProjects()
   },[])
+
+  const deleteTask = (id) => {
+    axios
+      .post(`${API_URL}/api/tasks/${id}/delete`)
+      .then(() => getAllProjects())
+      .catch((error) => console.log(error));
+  };
 
   const {logOutUser} = useContext(AuthContext);
 
     return (
       <div>
-          <ImportantTask allProjects={projects}/>
-          <ScheduledTask allProjects={projects}/>
-          <ProjectList projects={projects} getAllProjects={getAllProjects}/>
+          <ImportantTask allProjects={projects} tasks={tasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>
+          <ScheduledTask allProjects={projects} tasks={tasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>
+          <ProjectList projects={projects} getAllProjects={getAllProjects} deleteTask={deleteTask}/>
 {/*           <CreateTask /> */}
           <button onClick={logOutUser}>Logout</button>
       </div>
