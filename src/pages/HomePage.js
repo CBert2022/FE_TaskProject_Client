@@ -6,6 +6,7 @@ import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import CreateProject from "../components/CreateProject";
 
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
@@ -45,7 +46,7 @@ function HomePage() {
           <ImportantTask allProjects={projects} tasks={tasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>
           <ScheduledTask allProjects={projects} tasks={tasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>
           <ProjectList projects={projects} getAllProjects={getAllProjects} deleteTask={deleteTask}/>
-{/*           <CreateTask /> */}
+          <CreateProject getAllProjects={getAllProjects}/>
           <button onClick={logOutUser}>Logout</button>
       </div>
     );
