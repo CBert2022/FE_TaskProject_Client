@@ -11,20 +11,17 @@ function CreateTask({projectId, refresh}) {
 
   const handleSubmit = (e) => {                          
     e.preventDefault();
-    console.log(important)
  
     const requestBody = { title, description, dueDate, projectId, important };
 
     axios
       .post(`${API_URL}/api/tasks`, requestBody)
       .then((response) => {
-        console.log("response")
         // Reset the state
         setTitle("");
         setDescription("");
         setDueDate("")
         setImportant(false)
-        console.log(important)
         refresh()
       })
       .catch((error) => console.log(error));
