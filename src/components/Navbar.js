@@ -1,12 +1,13 @@
-
- 
 function Navbar() {
+
+
   return (
-    <nav>
+    <nav >
 
  
-        <button>Dark/Ligth Mode</button>
-        <button>Language Switch</button>
+      <button >
+        haiaaioah
+      </button>
   
     </nav>
   );
