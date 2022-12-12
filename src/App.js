@@ -6,8 +6,8 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import IsPrivate from "./components/IsPrivate";
 
- 
 function App() {
+
   return (
     <div className="App">
       <Navbar />

@@ -6,36 +6,12 @@ import { Link } from "react-router-dom";
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
-function ScheduledTask({ isDragging, text }) {
-    const [scheduledTasks, setScheduledTasks] = useState([]);
+function ScheduledTask({allProjects, tasks, getAllTasks, deleteTask}) {
     const [isShown, setIsShown] = useState();
 
-    const getAllScheduledTasks = () => {
-        axios
-          .get(`${API_URL}/api/tasks`)
-          .then((response) => {
-            console.log(response.data[0].dueDate)
-            let scheduledTasks = response.data.filter((task)=>{
-                return task.dueDate 
-    
-          })
-          setScheduledTasks(scheduledTasks)})
-          .catch((error) => console.log(error));
-      };
-
-      const deleteTask = (id) => {
-        console.log("delete called")
-        axios
-          .post(`${API_URL}/api/tasks/${id}/delete`)
-          .then(() => getAllScheduledTasks())
-          .catch((error) => console.log(error));
-      };
-
       useEffect(() => {
-        getAllScheduledTasks();
-      }, [] );
-
-      scheduledTasks && console.log(scheduledTasks)
+        getAllTasks();
+      }, [allProjects] );
 
       return (
         <>
@@ -44,14 +20,17 @@ function ScheduledTask({ isDragging, text }) {
                 Scheduled Tasks
               </Link>
         </div>
-            {isShown && scheduledTasks.map((scheduledTask) => {
-              return (
-                <div className="TaskCard card" key={scheduledTask._id} >
-                  <h3>SCHEDUELD:{scheduledTask.title}</h3>
-                  <button onClick={()=>deleteTask(scheduledTask._id)}  > Delete </button>
-                </div>
-              );
-            })}    
+        {isShown && tasks.map((task) => {
+              if (task.dueDate){
+                return (
+                  <div className="TaskCard card" key={task._id} >
+                    <h3>SCHEDUELD:{task.title}</h3>
+                    <h3>{task.dueDate}</h3>
+                    <button onClick={()=>deleteTask(task._id)}  > Delete </button>
+                  </div>
+                );
+              }
+            })}
         </>
       );
 }

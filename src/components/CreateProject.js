@@ -3,8 +3,7 @@ import axios from "axios";
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
  
-function CreateProject({refresh, user}) {
-  
+function CreateProject({getAllProjects, user}) {
   const [title, setTitle] = useState("");
 
   const handleSubmit = (e) => {                          
@@ -16,7 +15,7 @@ function CreateProject({refresh, user}) {
       .then((response) => {
         // Reset the state
         setTitle("");
-        refresh()
+        getAllProjects()
       })
       .catch((error) => console.log(error));
   };

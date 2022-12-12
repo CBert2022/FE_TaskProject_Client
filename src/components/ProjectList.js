@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import CreateProject from "./CreateProject";
 import CreateTask from "./CreateTask";
 import QuickEntryTask from "./QuickEntryTask";
 
@@ -11,32 +10,12 @@ import { useContext } from "react";
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
-function ProjectListPage() {
-
+function ProjectListPage({projects, getAllProjects, deleteTask}) {
+  const [isShown, setIsShown] = useState("")
   const {user} = useContext(AuthContext);
   const [projects, setProjects] = useState([]);
-  const [isShown, setIsShown] = useState("")
-   
-  const getAllProjects = () => {
-    console.log("get projects called")
-    axios
-      .get(`${API_URL}/api/projects`)
-      .then((response) => setProjects(response.data))
-      .catch((error) => console.log(error));
-  };
-
-  console.log("rendering")
-
-  const deleteTask = (id) => {
-    console.log("delete called")
-    axios
-      .post(`${API_URL}/api/tasks/${id}/delete`)
-      .then(() => getAllProjects())
-      .catch((error) => console.log(error));
-  };
 
   const deleteProject = (id) => {
-    console.log("delete project called")
     axios 
     .post(`${API_URL}/api/projects/${id}/delete`)
     .then(() => getAllProjects())
@@ -45,11 +24,8 @@ function ProjectListPage() {
 
 
   useEffect(() => {
-    console.log("works")
     getAllProjects();
   }, [] );
-   
-  projects && console.log(projects)
     
   return (
     <div className="ProjectListPage">
@@ -80,9 +56,11 @@ function ProjectListPage() {
         );
       })}  
 
+
       <div>
       <CreateProject refresh={getAllProjects} user={user}/>
       </div> 
+
 
 
 
