@@ -6,7 +6,7 @@
 
 // const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
-// function EditTask(props) {
+ function EditTask(props) {
 
 //   const { isLoggedIn, user } = useContext(AuthContext);
 //   const [title, setTitle] = useState("");
@@ -99,6 +99,6 @@
 //       </form>
 //     </div>
 //   );
-// }
+ }
 
-// export default EditTask;
+ export default EditTask;

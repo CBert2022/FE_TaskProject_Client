@@ -1,5 +1,3 @@
-import axios from "axios";
-import { useState, useEffect, useRef } from "react";
 import EditTask from "./EditTask";
 import QuickEntryTask from "./QuickEntryTask";
 
@@ -22,7 +20,7 @@ function TaskListPage({getAllProjects, deleteTask, tasks, setTasks, getSpecificT
 
   <div>
     {projectId && <QuickEntryTask projectId={projectId} refresh={getAllProjects} />}
-    {projectId && <CreateTask projectId={projectId} refresh={getAllProjects} setTasks={setTasks} tasks={tasks} getSpecificTasks={getSpecificTasks} />}
+    {projectId && <EditTask projectId={projectId} refresh={getAllProjects} setTasks={setTasks} tasks={tasks} getSpecificTasks={getSpecificTasks} />}
   </div>
 
     </div>
