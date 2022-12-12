@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
-function ImportantTask({allProjects, tasks, getAllTasks, deleteTask}) {
+function ImportantTask({allProjects, tasks, getSpecificTasks, deleteTask}) {
     const [isShown, setIsShown] = useState(false);
 
       useEffect(() => {
-        getAllTasks();
+        getSpecificTasks();
       },[allProjects]);
 
       return (
