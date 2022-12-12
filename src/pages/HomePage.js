@@ -16,6 +16,8 @@ function HomePage() {
   const [projects, setProjects] = useState([]);
   const [tasks, setTasks] = useState([]);
 
+  // console.log("PROJECTS: ", projects)
+
   const getAllProjects = () => {
     axios
       .get(`${API_URL}/api/projects`)
@@ -29,19 +31,21 @@ function HomePage() {
       .then((response) => setTasks(response.data))
       .catch((error) => console.log(error));
   }
-
-  useEffect(()=>{
-    getAllProjects()
-  },[])
-
+  
   const deleteTask = (id) => {
     axios
-      .post(`${API_URL}/api/tasks/${id}/delete`)
-      .then(() => getAllProjects())
-      .catch((error) => console.log(error));
+    .post(`${API_URL}/api/tasks/${id}/delete`)
+    .then(() => getAllProjects())
+    .catch((error) => console.log(error));
   };
 
+  
+    useEffect(()=>{
+      getAllProjects()
+    },[])
+
   const {logOutUser, user} = useContext(AuthContext);
+
 
     return (
       <div>
@@ -51,7 +55,7 @@ function HomePage() {
           <ScheduledTask />
           <ImportantTask allProjects={projects} tasks={tasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>
           <ScheduledTask allProjects={projects} tasks={tasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>
-          <ProjectList projects={projects} getAllProjects={getAllProjects} deleteTask={deleteTask}/>
+          <ProjectList projects={projects} getAllProjects={getAllProjects} deleteTask={deleteTask} setProjects={setProjects}/>
           <CreateProject getAllProjects={getAllProjects}/>
 
           <button onClick={logOutUser}>Logout</button>
