@@ -2,8 +2,15 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import CreateTask from "./CreateTask";
 import QuickEntryTask from "./QuickEntryTask";
+
 import { Link } from "react-router-dom";
 import TaskListPage from "./TaskList";
+
+import { AuthContext } from "../context/auth.context";
+import { useContext } from "react";
+ 
+const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
+
 
 const API_URL = "http://localhost:5005"
 
@@ -11,6 +18,7 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask }) 
   // console.log("PROJECTS: ", projects)
 
   const [isShown, setIsShown] = useState("")
+
   const dragItem = useRef();
   const dragOverItem = useRef();
 
@@ -58,6 +66,9 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask }) 
 
   };
 
+  const {user} = useContext(AuthContext);
+
+
   const deleteProject = (id) => {
     axios
       .post(`${API_URL}/api/projects/${id}/delete`)
@@ -73,7 +84,9 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask }) 
   return (
     <div className="ProjectListPage">
 
-      {projects?.map((project, i) => {
+      {projects
+      .filter((oneProject)=> {return oneProject.createdBy === user._id})
+      .map((project, i) => {
         return (
           <>
 
@@ -111,6 +124,12 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask }) 
           </>
         );
       })}
+
+
+      <div>
+      <CreateProject refresh={getAllProjects} user={user}/>
+      </div> 
+
 
 
 

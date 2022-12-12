@@ -3,7 +3,7 @@ import axios from "axios";
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
  
-function CreateTask({projectId, refresh}) {
+function CreateTask({projectId, user, refresh}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState ("")
@@ -12,7 +12,7 @@ function CreateTask({projectId, refresh}) {
   const handleSubmit = (e) => {                          
     e.preventDefault();
  
-    const requestBody = { title, description, dueDate, projectId, important };
+    const requestBody = { title, description, dueDate, projectId, important, createdBy: user._id };
 
     axios
       .post(`${API_URL}/api/tasks`, requestBody)

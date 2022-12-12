@@ -3,13 +3,13 @@ import axios from "axios";
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
  
-function QuickEntryTask({projectId, refresh}) {
+function QuickEntryTask({projectId, refresh, user}) {
   const [title, setTitle] = useState("");
 
   const handleSubmit = (e) => {                          
     e.preventDefault();
  
-    const requestBody = { title, projectId };
+    const requestBody = { title, projectId, createdBy: user._id };
     axios
       .post(`${API_URL}/api/tasks`, requestBody)
       .then((response) => {
