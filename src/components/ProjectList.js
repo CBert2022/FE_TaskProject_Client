@@ -13,10 +13,8 @@ import { useContext } from "react";
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
 
-function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask, getAllTasks, tasks, setTasks }) {
+function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask, getSpecificTasks, tasks, setTasks, showForm}) {
   // console.log("PROJECTS: ", projects)
-
-  const [isShown, setIsShown] = useState("")
 
   const dragItem = useRef();
   const dragOverItem = useRef();
@@ -91,12 +89,17 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask, ge
                   onDragEnd={drop}
                   draggable >
 
-                  <Link onClick={() => setIsShown(project?._id)}>
+                  <Link onClick={() => {
+                    getSpecificTasks(project?._id) 
+                    showForm(project?._id)
+                    }}>
+
                     <h3>{project?.title}</h3>
                   </Link>
+
                   <button onClick={() => deleteProject(project?._id)}  > Delete </button>
                 </div>
-                <div>
+{/*                 <div>
 
                   <TaskListPage
                     project={project}
@@ -111,11 +114,8 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask, ge
                     />
 
 
-                </div>
+                </div> */}
               </div>
-
-              {isShown === project._id && <div><QuickEntryTask projectId={project._id} refresh={getAllProjects} /></div>}
-              {isShown === project._id && <div><CreateTask projectId={project._id} refresh={getAllProjects} setTasks={setTasks} tasks={tasks} getAllTasks={getAllTasks}/></div>}
 
 
             </div>
