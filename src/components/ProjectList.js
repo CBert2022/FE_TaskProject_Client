@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import CreateProject from "./CreateProject";
-import CreateTask from "./CreateTask";
 import QuickEntryTask from "./QuickEntryTask"
+import EditTask from "./EditTask";
 
 import { Link } from "react-router-dom";
 import TaskListPage from "./TaskList";
@@ -115,7 +115,7 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask, ge
               </div>
 
               {isShown === project._id && <div><QuickEntryTask projectId={project._id} refresh={getAllProjects} /></div>}
-              {isShown === project._id && <div><CreateTask projectId={project._id} refresh={getAllProjects} setTasks={setTasks} tasks={tasks} getAllTasks={getAllTasks}/></div>}
+              {/* {isShown === project._id && <div><EditTask projectId={project._id} refresh={getAllProjects} setTasks={setTasks} tasks={tasks} getAllTasks={getAllTasks}/></div>} */}
 
 
             </div>

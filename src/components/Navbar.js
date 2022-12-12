@@ -6,7 +6,7 @@ function Navbar() {
 
  
       <button >
-        haiaaioah
+        Whohooooooooo!
       </button>
   
     </nav>

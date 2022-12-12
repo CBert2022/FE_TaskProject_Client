@@ -1,13 +1,12 @@
-/* import CreateTask from "../components/CreateTask"; */
 import ImportantTask from "../components/ImportantTasks";
 import ScheduledTask from "../components/ScheduledTasks";
 import ProjectList from "../components/ProjectList"
-import CreateTask from "../components/CreateTask";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import CreateProject from "../components/CreateProject";
+
 
 
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
