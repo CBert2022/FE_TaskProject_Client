@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
+import CreateTask from "./CreateTask";
 
 function TaskListPage(props) {
 
-const [tasks, setTasks]= useState(props.project.tasks)
 
   const dragItem = useRef();
   const dragOverItem = useRef();
@@ -12,7 +12,7 @@ const [tasks, setTasks]= useState(props.project.tasks)
     dragItem.current = position;
     console.log("DRAG START ",element.target);
   };
-
+console.log(props)
   const dragEnter = (element, position) => {
     console.log("TASKS2", props.project.tasks)
     dragOverItem.current = position;
@@ -32,14 +32,14 @@ const [tasks, setTasks]= useState(props.project.tasks)
     dragItem.current = null;
     dragOverItem.current = null;
     console.log("list" , props.project)
-    setTasks(copyListItems);
+    props.setTasks(copyListItems);
   };
  
     return (
         <div>
-             {props.isShown === props.project?._id && props.project?.tasks && tasks.map((task, i) => {
+             {props.isShown === props.project?._id && props.project?.tasks && props.project.tasks.map((task, i) => {
                 return (
-                  <>
+                  <div key={task._id}>
                   <div className="TaskCard card" key={task._id} 
                   onDragStart={(elem) => dragStart(elem, i)}
                   onDragEnter={(elem) => dragEnter(elem, i)} 
@@ -50,7 +50,7 @@ const [tasks, setTasks]= useState(props.project.tasks)
                   </div>
                   
                 
-                </>
+                </div>
                 )
               })}
         </div>

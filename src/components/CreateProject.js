@@ -1,12 +1,17 @@
 import { useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../context/auth.context";
+import { useContext } from "react";                     
+ 
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
  
-function CreateProject({getAllProjects, user}) {
+function CreateProject({getAllProjects}) {
+  const { isLoggedIn, user } = useContext(AuthContext);
   const [title, setTitle] = useState("");
+  
 
-  const handleSubmit = (e) => {                          
+  const handleSubmit = (e) => {                         
     e.preventDefault();
  
     const requestBody = { title, createdBy: user._id};
