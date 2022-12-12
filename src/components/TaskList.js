@@ -1,6 +1,8 @@
+import axios from "axios";
 import { useState, useEffect, useRef } from "react";
-import CreateTask from "./CreateTask";
+import EditTask from "./EditTask";
 import QuickEntryTask from "./QuickEntryTask";
+
 
 function TaskListPage({getAllProjects, deleteTask, tasks, setTasks, getSpecificTasks, projectId }) {
 
@@ -37,26 +39,19 @@ export default TaskListPage;
     dragItem.current = position;
     console.log("DRAG START ",element.target);
   };
-console.log(props)
   const dragEnter = (element, position) => {
-    console.log("TASKS2", props.project.tasks)
     dragOverItem.current = position;
-    console.log("DRAG ENTER ",element.target);
   };
  
   const drop = () => {
-    console.log("TASKS3", props.project.tasks)
     let copyListItems = [...props.project.tasks]
     // const copyListItems = JSON.parse(JSON.stringify(projects));
-    console.log("COPY LIST ITEMS: ", copyListItems)
-    console.log("DRAG ITEM", dragItem);
     const dragItemContent = copyListItems[dragItem.current];
-    console.log("DRAG ITEM CONTENT: ", dragItemContent)
     copyListItems.splice(dragItem.current, 1);
     copyListItems.splice(dragOverItem.current, 0, dragItemContent);
     dragItem.current = null;
     dragOverItem.current = null;
-    console.log("list" , props.project)
     props.setTasks(copyListItems);
+
   }; */
 

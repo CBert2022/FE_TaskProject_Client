@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import CreateProject from "./CreateProject";
-import CreateTask from "./CreateTask";
 import QuickEntryTask from "./QuickEntryTask"
+import EditTask from "./EditTask";
 
 import { Link } from "react-router-dom";
 import TaskListPage from "./TaskList";
