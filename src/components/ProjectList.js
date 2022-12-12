@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import CreateProject from "./CreateProject";
 import CreateTask from "./CreateTask";
-import QuickEntryTask from "./QuickEntryTask";
+import QuickEntryTask from "./QuickEntryTask"
 
 import { Link } from "react-router-dom";
 import TaskListPage from "./TaskList";
@@ -11,8 +12,6 @@ import { useContext } from "react";
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
-
-const API_URL = "http://localhost:5005"
 
 function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask }) {
   // console.log("PROJECTS: ", projects)
@@ -84,8 +83,7 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask }) 
   return (
     <div className="ProjectListPage">
 
-      {projects
-      .filter((oneProject)=> {return oneProject.createdBy === user._id})
+      {projects?.filter((oneProject)=> {return oneProject.createdBy === user._id})
       .map((project, i) => {
         return (
           <>
@@ -116,10 +114,10 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask }) 
 
               </div>
             </div>
-            {/* 
+            
             {isShown === project._id && <div><QuickEntryTask projectId={project._id} refresh={getAllProjects}/></div>}
             {isShown === project._id && <div><CreateTask projectId={project._id} refresh={getAllProjects}/></div> }
- */}
+
 
           </>
         );

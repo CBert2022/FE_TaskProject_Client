@@ -2,6 +2,7 @@
 import ImportantTask from "../components/ImportantTasks";
 import ScheduledTask from "../components/ScheduledTasks";
 import ProjectList from "../components/ProjectList"
+import CreateTask from "../components/CreateTask";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 import ProjectListPage from "../components/ProjectList";
@@ -50,9 +51,6 @@ function HomePage() {
     return (
       <div>
           <CreateTask />
-          <ProjectListPage />
-          <ImportantTask />
-          <ScheduledTask />
           <ImportantTask allProjects={projects} tasks={tasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>
           <ScheduledTask allProjects={projects} tasks={tasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>
           <ProjectList projects={projects} getAllProjects={getAllProjects} deleteTask={deleteTask} setProjects={setProjects}/>
