@@ -3,12 +3,17 @@ import axios from "axios";
 import CreateProject from "./CreateProject";
 import CreateTask from "./CreateTask";
 import QuickEntryTask from "./QuickEntryTask";
+
 import { Link } from "react-router-dom";
 import TaskListPage from "./TaskList";
+import { AuthContext } from "../context/auth.context";
+import { useContext } from "react";
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
 function ProjectListPage() {
+
+  const {user} = useContext(AuthContext);
   const [projects, setProjects] = useState([]);
   const [isShown, setIsShown] = useState("")
    
@@ -49,7 +54,9 @@ function ProjectListPage() {
   return (
     <div className="ProjectListPage">
         
-      {projects.map((project) => {
+      {projects
+      .filter((oneProject)=> {return oneProject.createdBy === user._id})
+      .map((project) => {
         return (
           <>
 
@@ -74,7 +81,7 @@ function ProjectListPage() {
       })}  
 
       <div>
-      <CreateProject refresh={getAllProjects}/>
+      <CreateProject refresh={getAllProjects} user={user}/>
       </div> 
 
 
