@@ -9,11 +9,11 @@ import TaskListPage from "./TaskList";
 
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
- 
+
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
 
-function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask }) {
+function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask, getAllTasks, tasks, setTasks }) {
   // console.log("PROJECTS: ", projects)
 
   const [isShown, setIsShown] = useState("")
@@ -25,8 +25,8 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask }) 
 
   const updateList = () => {
     /* projects && setTimeout(() => { */
-      axios
-        .post(`${API_URL}/api/projects/sort`, { array: copyListItems })
+    axios
+      .post(`${API_URL}/api/projects/sort`, { array: copyListItems })
     /* }, 10) */
   };
 
@@ -65,7 +65,7 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask }) 
 
   };
 
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
 
   const deleteProject = (id) => {
@@ -75,58 +75,57 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask }) 
       .catch((error) => console.log(error));
   }
 
-
-  useEffect(() => {
-    getAllProjects();
-  }, []);
-
   return (
     <div className="ProjectListPage">
 
-      {projects?.filter((oneProject)=> {return oneProject.createdBy === user._id})
-      .map((project, i) => {
-        return (
-          <>
+      {projects?.filter((oneProject) => { return oneProject.createdBy === user._id })
+        .map((project, i) => {
+          return (
+            <div key={i}>
 
-            <div>
-              <div className="ProjectCard card"
-                key={i}
-                onDragStart={(elem) => dragStart(elem, i)}
-                onDragEnter={(elem) => dragEnter(elem, i)}
-                onDragEnd={drop}
-                draggable >
-
-                <Link onClick={() => setIsShown(project?._id)}>
-                  <h3>{project?.title}</h3>
-                </Link>
-                <button onClick={() => deleteProject(project?._id)}  > Delete </button>
-              </div>
               <div>
+                <div className="ProjectCard card"
+                  key={i}
+                  onDragStart={(elem) => dragStart(elem, i)}
+                  onDragEnter={(elem) => dragEnter(elem, i)}
+                  onDragEnd={drop}
+                  draggable >
 
-                <TaskListPage
-                  project={project}
-                  isShown={isShown}
-                  deleteTask={deleteTask}
-                  dragStart={dragStart}
-                  dragEnter={dragEnter}
-                  drop={drop}
-                  setProjects={setProjects} />
+                  <Link onClick={() => setIsShown(project?._id)}>
+                    <h3>{project?.title}</h3>
+                  </Link>
+                  <button onClick={() => deleteProject(project?._id)}  > Delete </button>
+                </div>
+                <div>
 
+                  <TaskListPage
+                    project={project}
+                    isShown={isShown}
+                    deleteTask={deleteTask}
+                    dragStart={dragStart}
+                    dragEnter={dragEnter}
+                    drop={drop}
+                    setProjects={setProjects} 
+                    setTasks={setTasks} 
+                    tasks={tasks}
+                    />
+
+
+                </div>
               </div>
+
+              {isShown === project._id && <div><QuickEntryTask projectId={project._id} refresh={getAllProjects} /></div>}
+              {isShown === project._id && <div><CreateTask projectId={project._id} refresh={getAllProjects} setTasks={setTasks} tasks={tasks} getAllTasks={getAllTasks}/></div>}
+
+
             </div>
-            
-            {isShown === project._id && <div><QuickEntryTask projectId={project._id} refresh={getAllProjects}/></div>}
-            {isShown === project._id && <div><CreateTask projectId={project._id} refresh={getAllProjects}/></div> }
-
-
-          </>
-        );
-      })}
+          );
+        })}
 
 
       <div>
-      <CreateProject refresh={getAllProjects} user={user}/>
-      </div> 
+        <CreateProject refresh={getAllProjects} user={user} />
+      </div>
 
 
 
