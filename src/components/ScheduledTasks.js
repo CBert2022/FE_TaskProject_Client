@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function ScheduledTask({allProjects, tasks, getAllTasks, deleteTask}) {
+function ScheduledTask({allProjects, tasks, getSpecificTasks, deleteTask, getAllTasks}) {
     const [isShown, setIsShown] = useState();
 
       useEffect(() => {
-        getAllTasks();
+        getSpecificTasks();
       }, [allProjects] );
 
       return (
