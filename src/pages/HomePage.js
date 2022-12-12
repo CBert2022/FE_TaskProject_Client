@@ -13,12 +13,15 @@ const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 function HomePage() {
   const [projects, setProjects] = useState([]);
   const [tasks, setTasks] = useState([]);
-
+  const { user, logOutUser } = useContext(AuthContext)
+  console.log("USER AFTER CONTEXT: ", useContext(AuthContext))
   // console.log("PROJECTS: ", projects)
 
   const getAllProjects = () => {
+    console.log("THIS IS USER ",user)
+
     axios
-      .get(`${API_URL}/api/projects`)
+      .get(`${API_URL}/api/users/${user._id}/projects/`)
       .then((response) => setProjects(response.data))
       .catch((error) => console.log(error));
   };
@@ -38,10 +41,14 @@ function HomePage() {
   };
   
     useEffect(()=>{
-      getAllProjects()
-    },[])
+      setTimeout(()=>{
+        
+        console.log("useEffect called")
+        console.log(user)
+      },5000)
+      
+    },[user])
   
-  const {logOutUser} = useContext(AuthContext);
 
     return (
       <div>

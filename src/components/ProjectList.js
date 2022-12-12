@@ -1,15 +1,19 @@
 import { useState, useEffect, useRef } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import CreateTask from "./CreateTask";
 import QuickEntryTask from "./QuickEntryTask";
 import { Link } from "react-router-dom";
 import TaskListPage from "./TaskList";
 
+
 const API_URL = "http://localhost:5005"
 
 function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask }) {
   // console.log("PROJECTS: ", projects)
 
+  const { user } = useContext(AuthContext)
   const [isShown, setIsShown] = useState("")
   const dragItem = useRef();
   const dragOverItem = useRef();
@@ -18,8 +22,11 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask }) 
 
   const updateList = () => {
     /* projects && setTimeout(() => { */
+    console.log("USER IN LIST: ", user)
+    console.log("COPY ITEMS 2", copyListItems)
       axios
-        .post(`${API_URL}/api/projects/sort`, { array: copyListItems })
+        .post(`${API_URL}/api/users/${user._id}/projects`, { array: copyListItems })
+        .then(getAllProjects())
     /* }, 10) */
   };
 
