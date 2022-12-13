@@ -121,15 +121,6 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask, ge
             </div>
           );
         })}
-
-
-      {/* <div>
-        <CreateProject refresh={getAllProjects} user={user} />
-      </div> */}
-
-
-
-
     </div>
   );
 }

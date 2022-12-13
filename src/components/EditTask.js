@@ -33,6 +33,7 @@ console.log("props", props.projectId)
   };
  
 
+
   return (
     <div className="AddProject">
       <h3>Add Task</h3>
@@ -73,6 +74,9 @@ console.log("props", props.projectId)
       </form>
     </div>
   );
+
+ function EditTask(props) {
+
 
 //   const { isLoggedIn, user } = useContext(AuthContext);
 //   const [title, setTitle] = useState("");
@@ -165,6 +169,11 @@ console.log("props", props.projectId)
 //       </form>
 //     </div>
 //   );
+
 }
 
 export default EditTask;
+
+
+
+
