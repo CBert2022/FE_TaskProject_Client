@@ -19,7 +19,7 @@ function QuickEntryTask(props) {
       .then(() => {
         // Reset the statr
         setTitle("");
-        props.refresh(props.projectId)
+        props.getSpecificTasks(props.projectId)
       })
       .catch((error) => console.log(error));
   };

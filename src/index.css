@@ -97,7 +97,6 @@ textarea {
 } */
 
 .TaskCard {
-  /*   border: 2px solid red; */
   background-color: #B1D6AB;
   width: 100%;
   display: flex;
@@ -125,11 +124,15 @@ textarea {
 
 
 #flexcontainer {
+  
   display: flex;
   flex-direction: row;
   gap: 30px;
-  height: vh;
   width: 100vw;
+}
+
+#flexright{
+  width: 72vw;
 }
 
 
