@@ -16,12 +16,16 @@ function HomePage() {
   const [tasks, setTasks] = useState([]);
   const [allTasks, setAllTasks] = useState([]);
   const [projectId, setProjectId] = useState(null)
+  const [taskId, setTaskId] = useState(null);
 
 
   const showForm = (id) => {
     setProjectId(id)
   }
 
+  const showChosenTaskForm = (id) => {
+    setTaskId(id)
+  }
   const getAllProjects = () => {
     axios
       .get(`${API_URL}/api/projects`)
@@ -42,6 +46,8 @@ function HomePage() {
       })
       .catch((error) => console.log(error));
   }
+
+   
 
   const getAllTasks = () => {
     axios
@@ -82,9 +88,9 @@ function HomePage() {
         <CreateProject getAllProjects={getAllProjects} />
 
       </div>
-      <div id='flexright'className="borderLol">
 
-        <TaskListPage deleteTask={deleteTask} getSpecificTasks={getSpecificTasks} tasks={tasks} setTasks={setTasks} projectId={projectId} />
+      <div id='flexright'>
+        <TaskListPage deleteTask={deleteTask} getSpecificTasks={getSpecificTasks} tasks={tasks} setTasks={setTasks} projectId={projectId} getAllTasks={getAllTasks} allTasks={allTasks} taskId={taskId} showChosenTaskForm={showChosenTaskForm} />
 
       </div>
     </div>
