@@ -1,25 +1,26 @@
 body {
   margin: 0;
+  background-color: white;
 }
- 
+
 a {
   list-style: none;
   color: black;
 }
- 
+
 button {
-  padding: 5px 10px;
   min-width: 50px;
-  margin: 5px;
-  font-size: 18px;
-  border-radius: 10px;
+  margin: 10px;
+  font-size: 15px;
+  border-radius: 50px;
+  background-color: #EEFFE4;
 }
- 
+
 label {
   width: 200px;
   display: block;
 }
- 
+
 input,
 textarea {
   width: 200px;
@@ -27,41 +28,37 @@ textarea {
   display: inline-block;
   margin: 10px;
 }
- 
+
 .Navbar {
-  background: #121c33;
+  background: #1A5647;
   color: white;
-  padding: 0px 20px;
-  box-shadow: 0px 1px 2px gray;
-  width: 100%;
+  width: 100vw;
   margin-bottom: 15px;
   padding: 5px;
 }
- 
+
 .Navbar li {
   list-style: none;
   color: white;
   font-size: 24px;
   font-weight: 600;
 }
- 
+
 .card {
   display: flex;
   flex-wrap: wrap;
-  align-content:flex-start;
   width: 100%;
-  padding: 10px;
-  box-shadow: 0px 2px 3px grey;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  background: #a2f2b1;
+  padding-left: 10px;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  background: #89CBA3;
   border-radius: 10px;
 }
 
 .push {
-    margin-left: auto;
+  margin-left: auto;
 }
- 
+
 /* .EditProjectPage,
 .AddProject,
 .AddTask {
@@ -79,37 +76,63 @@ textarea {
 .EditProjectPage {
   background-color: rgb(239, 196, 88);
 } */
- 
+
 .EditProjectPage form,
 .AddTask form,
 .AddProject form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #CAD2C5;
+  margin: 0 auto;
+  margin-bottom: 3px;
+  width: 100%;
+  margin-left: 0px;
+  padding-left: 10px;
 }
- 
+
 /* .AddTask button,
 .AddProject button {
   display: block;
 } */
- 
+
 .TaskCard {
-  background-color: #dfeef9;
+  /*   border: 2px solid red; */
+  background-color: #B1D6AB;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-left: 10px;
+  margin-bottom: 3px;
+  border-radius: 10px;
+
 }
 
 .ImportantCard {
-  background-color: #efb5be;
+  background-color: #4FC491;
   height: 58.77px;
 }
 
-.ScheduledCard{
-  background-color: #f5e781;
+/* .ImportantCard a{
+  justify-content: center;
+} */
+
+.ScheduledCard {
+  background-color: #79D1AB;
   height: 58.77px;
 }
 
-#flexcontainer{
+
+#flexcontainer {
   display: flex;
   flex-direction: row;
   gap: 30px;
   height: vh;
+  width: 100vw;
+}
+
+.borderLol {
+  width: 73%;
+/*   border: 2px solid blue */
 }

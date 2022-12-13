@@ -11,17 +11,17 @@ function ScheduledTask({allTasks, deleteTask, getAllTasks}) {
       return (
         <>
         <div className="ScheduledCard card">
-              <Link onClick={() => setIsShown(!isShown)}>
+              <h2 onClick={() => setIsShown(!isShown)}>
                 Scheduled Tasks
-              </Link>
+              </h2>
         </div>
         {isShown && allTasks.map((task) => {
               if (task.dueDate){
                 return (
                   <div className="TaskCard card" key={task._id} >
-                    <h3>SCHEDUELD:{task.title}</h3>
-                    <h3>{task.dueDate}</h3>
-                    <button onClick={()=>deleteTask(task._id)}  > Delete </button>
+                    <h3>SCHEDULED:{task.title}</h3>
+{/*                     <h3>{task.dueDate}</h3>
+ */}                    <button className="push" onClick={()=>deleteTask(task._id)}  > Delete </button>
                   </div>
                 );
               }

@@ -1,28 +1,29 @@
+import ImportantTask from "../components/ImportantTasks";
+import ScheduledTask from "../components/ScheduledTasks";
+
 import EditTask from "./EditTask";
 import QuickEntryTask from "./QuickEntryTask";
 
 
-function TaskListPage({deleteTask, getSpecificTasks, tasks, setTasks, projectId}) {
+function TaskListPage({ deleteTask, getSpecificTasks, tasks, setTasks, projectId, allTasks, getAllTasks  }) {
 
   return (
     <div>
-
       {tasks?.map((task) => {
         return (
           <div key={task._id}>
-            <div className="TaskCard card" /* key={task._id} onDragStart={(elem) => dragStart(elem, i)} onDragEnter={(elem) => dragEnter(elem, i)} onDragEnd={drop} draggable */>
+            <div className="TaskCard " /* key={task._id} onDragStart={(elem) => dragStart(elem, i)} onDragEnter={(elem) => dragEnter(elem, i)} onDragEnd={drop} draggable */>
               <h3>{task.title}</h3>
-              <button className='push' onClick={() =>deleteTask(task._id)}  > Delete </button>
-              <button > Done </button>
+              <button className='push'> Done </button>
+              <button onClick={() => deleteTask(task._id)}  > Delete </button>
             </div>
           </div>
         )
       })}
-
-  <div>
-    {projectId && <QuickEntryTask projectId={projectId} refresh={getSpecificTasks} />}
-    {projectId && <EditTask projectId={projectId} refresh={getSpecificTasks} setTasks={setTasks} tasks={tasks} getSpecificTasks={getSpecificTasks} />}
-  </div>
+      <div>
+        {projectId && <QuickEntryTask projectId={projectId} refresh={getSpecificTasks} />}
+        {projectId && <EditTask projectId={projectId} refresh={getSpecificTasks} setTasks={setTasks} tasks={tasks} getSpecificTasks={getSpecificTasks} />}
+      </div>
 
     </div>
   );

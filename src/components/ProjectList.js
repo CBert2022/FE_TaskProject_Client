@@ -10,7 +10,7 @@ import { useContext } from "react";
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
 
-function ProjectListPage({ projects, setProjects, getAllProjects, getSpecificTasks, showForm}) {
+function ProjectListPage({ projects, setProjects, getAllProjects, getSpecificTasks, showForm }) {
   // console.log("PROJECTS: ", projects)
 
   const dragItem = useRef();
@@ -87,9 +87,9 @@ function ProjectListPage({ projects, setProjects, getAllProjects, getSpecificTas
                   draggable >
 
                   <Link onClick={() => {
-                    getSpecificTasks(project?._id) 
+                    getSpecificTasks(project?._id)
                     showForm(project?._id)
-                    }}>
+                  }}>
 
                     <h3>{project?.title}</h3>
                   </Link>

@@ -72,14 +72,17 @@ function HomePage() {
 
         <ImportantTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />
 
+
         <ScheduledTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />
+
+        <hr />
 
         <ProjectList projects={projects} getAllProjects={getAllProjects} setProjects={setProjects} getSpecificTasks={getSpecificTasks} showForm={showForm} />
 
         <CreateProject getAllProjects={getAllProjects} />
 
       </div>
-      <div id='flexright'>
+      <div id='flexright'className="borderLol">
 
         <TaskListPage deleteTask={deleteTask} getSpecificTasks={getSpecificTasks} tasks={tasks} setTasks={setTasks} projectId={projectId} />
 
