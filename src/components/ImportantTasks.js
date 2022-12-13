@@ -12,16 +12,16 @@ function ImportantTask({allTasks, deleteTask, getAllTasks}) {
       return (
         <>
         <div className="ImportantCard card">
-              <Link onClick={() => setIsShown(!isShown)}>
+              <h2 onClick={() => setIsShown(!isShown)}>
                 Important Tasks
-              </Link>
+              </h2>
         </div>
             {isShown && allTasks.map((task) => {
               if (task.important){
                 return (
                   <div className="TaskCard card" key={task._id} >
                     {<h3>IMPORTANT:{task.title}</h3>}
-                    <button onClick={()=>deleteTask(task._id)}  > Delete </button>
+                    <button className="push" onClick={()=>deleteTask(task._id)}  > Delete </button>
                   </div>
                 );
               }

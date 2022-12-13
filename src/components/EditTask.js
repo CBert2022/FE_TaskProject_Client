@@ -38,7 +38,7 @@ function EditTask(props) {
  
 
    return (
-     <div className="AddTask form">
+     <div className="AddProject">
        <h3>Add Task</h3>
 
        <form onSubmit={handleSubmit}>
@@ -86,7 +86,6 @@ function EditTask(props) {
        </form>
      </div>
    );
-
 
 }}
 
