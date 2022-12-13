@@ -38,8 +38,10 @@ function EditTask(props) {
  
 
    return (
-     <div className="AddTask form">
+
+     <div className="AddProject">
        <h3>Edit {props.singleTask.title}</h3>
+
 
        <form onSubmit={handleSubmit}>
          <label>Title:</label>
@@ -88,6 +90,7 @@ function EditTask(props) {
    );
 
 }
+
 
 export default EditTask;
 

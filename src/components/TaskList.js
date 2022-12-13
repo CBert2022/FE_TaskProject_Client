@@ -1,3 +1,6 @@
+import ImportantTask from "../components/ImportantTasks";
+import ScheduledTask from "../components/ScheduledTasks";
+
 import EditTask from "./EditTask";
 import QuickEntryTask from "./QuickEntryTask";
 import { Link } from "react-router-dom";
@@ -41,6 +44,7 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
           <div key={task._id}>
           {console.log(task.done)}
             <div className={`card ${task.done? "ImportantCard" : ""}`} /* key={task._id} onDragStart={(elem) => dragStart(elem, i)} onDragEnter={(elem) => dragEnter(elem, i)} onDragEnd={drop} draggable */>
+
               <div onClick={(e) => {
                 handleClick(task)
               }}>
@@ -54,7 +58,6 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
 
         )
       })}
-
       <div>
         {projectId && <QuickEntryTask projectId={projectId} refresh={getAllProjects}/>}
         {singleTask && <EditTask projectId={projectId} refresh={getAllProjects} setTasks={setTasks} tasks={tasks} getSpecificTasks={getSpecificTasks} singleTask={singleTask} getAllTasks={getAllTasks} allTasks={allTasks} taskId={taskId} getChosenTask={getChosenTask} showChosenTaskForm={showChosenTaskForm} />}
