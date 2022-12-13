@@ -7,12 +7,12 @@ a {
   color: black;
 }
  
-button,
-select {
+button {
   padding: 5px 10px;
   min-width: 50px;
   margin: 5px;
   font-size: 18px;
+  border-radius: 10px;
 }
  
 label {
@@ -29,7 +29,7 @@ textarea {
 }
  
 .Navbar {
-  background: #515f7d;
+  background: #121c33;
   color: white;
   padding: 0px 20px;
   box-shadow: 0px 1px 2px gray;
@@ -46,17 +46,23 @@ textarea {
 }
  
 .card {
-  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content:flex-start;
+  width: 100%;
   padding: 10px;
   box-shadow: 0px 2px 3px grey;
   margin: 0 auto;
   margin-bottom: 20px;
   background: #a2f2b1;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
+.push {
+    margin-left: auto;
+}
  
-.EditProjectPage,
+/* .EditProjectPage,
 .AddProject,
 .AddTask {
   background: #f9eec3;
@@ -72,7 +78,7 @@ textarea {
  
 .EditProjectPage {
   background-color: rgb(239, 196, 88);
-}
+} */
  
 .EditProjectPage form,
 .AddTask form,
@@ -82,10 +88,10 @@ textarea {
   align-items: center;
 }
  
-.AddTask button,
+/* .AddTask button,
 .AddProject button {
   display: block;
-}
+} */
  
 .TaskCard {
   background-color: #dfeef9;
@@ -93,9 +99,17 @@ textarea {
 
 .ImportantCard {
   background-color: #efb5be;
+  height: 58.77px;
 }
 
 .ScheduledCard{
   background-color: #f5e781;
+  height: 58.77px;
 }
 
+#flexcontainer{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  height: vh;
+}

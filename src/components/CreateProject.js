@@ -1,12 +1,15 @@
 import { useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
-import { useContext } from "react";                     
+import { useContext } from "react";       
+import Confetti from './Confetti'; // Confetti Test
+            
  
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
  
 function CreateProject({getAllProjects}) {
+  const [isVisible, setIsVisible] = useState(false); // Confetti Test
   const { isLoggedIn, user } = useContext(AuthContext);
   const [title, setTitle] = useState("");
   
@@ -27,18 +30,21 @@ function CreateProject({getAllProjects}) {
  
  
   return (
-    <div className="AddProject">
-      <h3>Add Project</h3>
+    <div className="ProjectCard card">
+      <h3>+</h3>
  
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="title"
           value={title}
+          placeholder='Add Prpject'
           onChange={(e) => setTitle(e.target.value)}
         />
- 
-        <button type="submit">Submit</button>
+         <>
+      <button className="push" type="submit" onClick={() => setIsVisible(true)}>Add</button>
+      {isVisible && <Confetti />}
+    </>git pull origion 
       </form>
     </div>
   );

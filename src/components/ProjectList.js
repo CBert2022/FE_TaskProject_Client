@@ -97,7 +97,7 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask, ge
                     <h3>{project?.title}</h3>
                   </Link>
 
-                  <button onClick={() => deleteProject(project?._id)}  > Delete </button>
+                  <button className='push' onClick={() => deleteProject(project?._id)}  > Delete </button>
                 </div>
 {/*                 <div>
 

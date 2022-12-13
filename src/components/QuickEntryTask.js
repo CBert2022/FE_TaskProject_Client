@@ -5,28 +5,28 @@ import { useContext } from "react";
  
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
  
-function QuickEntryTask({projectId, refresh}) {
+function QuickEntryTask(props) {
   const { isLoggedIn, user } = useContext(AuthContext);
   const [title, setTitle] = useState("");
 
   const handleSubmit = (e) => {                          
     e.preventDefault();
  
-    
-    const requestBody = { title, projectId, createdBy: user._id };
-    axios
+    const requestBody = { title, projectId: props.projectId, createdBy: user._id };
+   
+   return axios
       .post(`${API_URL}/api/tasks`, requestBody)
-      .then((response) => {
+      .then(() => {
         // Reset the statr
         setTitle("");
-        refresh()
+        props.refresh()
       })
       .catch((error) => console.log(error));
   };
  
  
   return (
-    <div className="AddProject">
+    <div className="TaskCard card">
       <h3>Add Task</h3>
  
       <form onSubmit={handleSubmit}>
@@ -35,9 +35,10 @@ function QuickEntryTask({projectId, refresh}) {
           name="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          placeholder='Add Task'
         />
  
-        <button type="submit">Submit</button>
+        <button type="submit">Add Task</button>
       </form>
     </div>
   );
