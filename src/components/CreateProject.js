@@ -44,7 +44,7 @@ function CreateProject({getAllProjects}) {
          <>
       <button className="push" type="submit" onClick={() => setIsVisible(true)}>Add</button>
       {isVisible && <Confetti />}
-    </>git pull origion 
+    </> 
       </form>
     </div>
   );

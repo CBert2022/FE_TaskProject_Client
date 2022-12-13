@@ -1,11 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 import axios from "axios";
-import CreateProject from "./CreateProject";
-import QuickEntryTask from "./QuickEntryTask"
-import EditTask from "./EditTask";
 
 import { Link } from "react-router-dom";
-import TaskListPage from "./TaskList";
+
 
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
@@ -13,7 +10,7 @@ import { useContext } from "react";
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
 
-function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask, getSpecificTasks, tasks, setTasks, showForm}) {
+function ProjectListPage({ projects, setProjects, getAllProjects, getSpecificTasks, showForm}) {
   // console.log("PROJECTS: ", projects)
 
   const dragItem = useRef();
@@ -99,22 +96,6 @@ function ProjectListPage({ projects, setProjects, getAllProjects, deleteTask, ge
 
                   <button className='push' onClick={() => deleteProject(project?._id)}  > Delete </button>
                 </div>
-{/*                 <div>
-
-                  <TaskListPage
-                    project={project}
-                    isShown={isShown}
-                    deleteTask={deleteTask}
-                    dragStart={dragStart}
-                    dragEnter={dragEnter}
-                    drop={drop}
-                    setProjects={setProjects} 
-                    setTasks={setTasks} 
-                    tasks={tasks}
-                    />
-
-
-                </div> */}
               </div>
 
 

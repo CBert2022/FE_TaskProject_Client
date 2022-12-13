@@ -19,7 +19,7 @@ function QuickEntryTask(props) {
       .then(() => {
         // Reset the statr
         setTitle("");
-        props.refresh()
+        props.refresh(props.projectId)
       })
       .catch((error) => console.log(error));
   };
@@ -27,7 +27,7 @@ function QuickEntryTask(props) {
  
   return (
     <div className="TaskCard card">
-      <h3>Add Task</h3>
+      <h3>+</h3>
  
       <form onSubmit={handleSubmit}>
         <input
