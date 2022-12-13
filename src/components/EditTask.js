@@ -27,7 +27,7 @@ console.log("props", props.projectId)
         setDescription("");
         setDueDate("");
         setImportant(false);
-        props.refresh()
+        props.refresh(props.projectId)
       })
       .catch((error) => console.log(error));
   };
@@ -170,7 +170,7 @@ console.log("props", props.projectId)
 //     </div>
 //   );
 
-}
+}}
 
 export default EditTask;
 
