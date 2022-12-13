@@ -87,7 +87,7 @@ function EditTask(props) {
      </div>
    );
 
-}}
+}
 
 export default EditTask;
 

@@ -70,7 +70,7 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
         )
       })}
       <div>
-        {projectId && <QuickEntryTask projectId={projectId} refresh={getAllProjects}/>}
+        {projectId && <QuickEntryTask projectId={projectId} getSpecificTasks={getSpecificTasks}/>}
         {singleTask && <EditTask projectId={projectId} refresh={getAllProjects} setTasks={setTasks} tasks={tasks} getSpecificTasks={getSpecificTasks} singleTask={singleTask} getAllTasks={getAllTasks} allTasks={allTasks} taskId={taskId} getChosenTask={getChosenTask} showChosenTaskForm={showChosenTaskForm}/>}
       </div>
     </div>
