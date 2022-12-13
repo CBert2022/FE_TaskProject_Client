@@ -1,8 +1,6 @@
 import ImportantTask from "../components/ImportantTasks";
 import ScheduledTask from "../components/ScheduledTasks";
 import ProjectList from "../components/ProjectList"
-import { AuthContext } from "../context/auth.context";
-import { useContext } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import CreateProject from "../components/CreateProject";
@@ -68,22 +66,18 @@ function HomePage() {
     getAllProjects()
   }, [])
 
-  const { logOutUser, user } = useContext(AuthContext);
-
 
   return (
-    <div>
-      <ImportantTask allProjects={projects} tasks={tasks} getSpecificTasks={getSpecificTasks} deleteTask={deleteTask} />
-
-      <ScheduledTask allProjects={projects} tasks={tasks} getSpecificTasks={getSpecificTasks} deleteTask={deleteTask} />
-
-      <TaskListPage projects={projects} getAllProjects={getAllProjects} deleteTask={deleteTask} setProjects={setProjects} getSpecificTasks={getSpecificTasks} tasks={tasks} setTasks={setTasks} projectId={projectId} getAllTasks={getAllTasks} allTasks={allTasks}/>
-
-      <ProjectList projects={projects} getAllProjects={getAllProjects} deleteTask={deleteTask} setProjects={setProjects} getSpecificTasks={getSpecificTasks} tasks={tasks} setTasks={setTasks} showForm={showForm} />
-
-      <CreateProject getAllProjects={getAllProjects} />
-
-      <button onClick={logOutUser}>Logout</button>
+    <div id='flexcontainer'>
+      <div id='flexleft'>
+        <ImportantTask allProjects={projects} tasks={tasks} getSpecificTasks={getSpecificTasks} deleteTask={deleteTask} />
+        <ScheduledTask allProjects={projects} tasks={tasks} getSpecificTasks={getSpecificTasks} deleteTask={deleteTask} />
+        <ProjectList projects={projects} getAllProjects={getAllProjects} deleteTask={deleteTask} setProjects={setProjects} getSpecificTasks={getSpecificTasks} tasks={tasks} setTasks={setTasks} showForm={showForm} />
+        <CreateProject getAllProjects={getAllProjects} />
+      </div>
+      <div id='flexright'>
+        <TaskListPage projects={projects} getAllProjects={getAllProjects} deleteTask={deleteTask} setProjects={setProjects} getSpecificTasks={getSpecificTasks} tasks={tasks} setTasks={setTasks} projectId={projectId} getAllTasks={getAllTasks} allTasks={allTasks}/>
+      </div>
     </div>
   );
 }
