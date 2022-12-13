@@ -39,12 +39,10 @@ function HomePage() {
     axios
       .get(`${API_URL}/api/tasks/${id}`)
       .then((response) => {
-        console.log("RESPONSEEEEEEEE", response.data)
+        /*         console.log("RESPONSEEEEEEEE", response.data) */
         setTasks(response.data)
-
       }).then((response) => {
         console.log(tasks)
-
       })
       .catch((error) => console.log(error));
   }
@@ -63,7 +61,8 @@ function HomePage() {
   const deleteTask = (id) => {
     axios
       .post(`${API_URL}/api/tasks/${id}/delete`)
-      .then(() => getAllProjects())
+      .then(() => getAllTasks())
+      .then(() => getSpecificTasks(projectId))
       .catch((error) => console.log(error));
   };
 
@@ -76,13 +75,19 @@ function HomePage() {
   return (
     <div id='flexcontainer'>
       <div id='flexleft'>
-        <ImportantTask allProjects={projects} tasks={tasks} getSpecificTasks={getSpecificTasks} deleteTask={deleteTask} />
-        <ScheduledTask allProjects={projects} tasks={tasks} getSpecificTasks={getSpecificTasks} deleteTask={deleteTask} />
-        <ProjectList projects={projects} getAllProjects={getAllProjects} deleteTask={deleteTask} setProjects={setProjects} getSpecificTasks={getSpecificTasks} tasks={tasks} setTasks={setTasks} showForm={showForm} />
+
+        <ImportantTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />
+
+        <ScheduledTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />
+
+        <ProjectList projects={projects} getAllProjects={getAllProjects} setProjects={setProjects} getSpecificTasks={getSpecificTasks} showForm={showForm} />
+
         <CreateProject getAllProjects={getAllProjects} />
+
       </div>
       <div id='flexright'>
         <TaskListPage deleteTask={deleteTask} getSpecificTasks={getSpecificTasks} tasks={tasks} setTasks={setTasks} projectId={projectId} getAllTasks={getAllTasks} allTasks={allTasks} taskId={taskId} showChosenTaskForm={showChosenTaskForm} />
+
       </div>
     </div>
   );

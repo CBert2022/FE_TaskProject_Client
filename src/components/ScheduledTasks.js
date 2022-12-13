@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function ScheduledTask({allProjects, tasks, getSpecificTasks, deleteTask, getAllTasks}) {
+function ScheduledTask({allTasks, deleteTask, getAllTasks}) {
     const [isShown, setIsShown] = useState();
 
       useEffect(() => {
-        getSpecificTasks();
-      }, [allProjects] );
+        getAllTasks();
+      }, [] );
 
       return (
         <>
@@ -15,7 +15,7 @@ function ScheduledTask({allProjects, tasks, getSpecificTasks, deleteTask, getAll
                 Scheduled Tasks
               </Link>
         </div>
-        {isShown && tasks.map((task) => {
+        {isShown && allTasks.map((task) => {
               if (task.dueDate){
                 return (
                   <div className="TaskCard card" key={task._id} >

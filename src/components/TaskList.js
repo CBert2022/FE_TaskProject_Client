@@ -45,7 +45,6 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
    }
 
 
-
   return (
 
     <div>
@@ -53,12 +52,14 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
         return (
           <div key={task._id}>
             <div className="TaskCard card" /* key={task._id} onDragStart={(elem) => dragStart(elem, i)} onDragEnter={(elem) => dragEnter(elem, i)} onDragEnd={drop} draggable */>
+
               <div onClick={(e) => {
                 handleClick(task)
               }}>
                 <h3>{task?.title}</h3>
               </div>
               <button className='push' onClick={() => deleteTask(task._id)}  > Delete </button>
+
               <button > Done </button>
             </div>
           </div>
@@ -67,10 +68,12 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
         )
       })}
 
+
       <div>
         {projectId && <QuickEntryTask projectId={projectId} refresh={getAllProjects}/>}
         {singleTask && <EditTask projectId={projectId} refresh={getAllProjects} setTasks={setTasks} tasks={tasks} getSpecificTasks={getSpecificTasks} singleTask={singleTask} getAllTasks={getAllTasks} allTasks={allTasks} taskId={taskId} getChosenTask={getChosenTask} showChosenTaskForm={showChosenTaskForm}/>}
       </div>
+
 
     </div>
   );
