@@ -43,5 +43,6 @@ function QuickEntryTask(props) {
     </div>
   );
 }
+
  
 export default QuickEntryTask;
