@@ -31,6 +31,7 @@ function EditTask(props) {
          setDueDate("");
          setImportant(false);
          setChecked(false);
+         props.setSingleTask("");
          props.getSpecificTasks(props.projectId)
        })
        .catch((error) => console.log(error));
@@ -39,7 +40,7 @@ function EditTask(props) {
 
    return (
 
-     <div className="AddProject">
+    <div className="AddProject">
      {props.singleTask && 
       <form onSubmit={handleSubmit}>
        <h2>Edit {props.singleTask.title}</h2>
