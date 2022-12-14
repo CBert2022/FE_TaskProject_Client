@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import CreateProject from "../components/CreateProject";
 import TaskListPage from "../components/TaskList";
+// import FilteredTasks from "../components/FilteredTasks";
 
 
 
@@ -76,15 +77,11 @@ function HomePage() {
     <div id='flexcontainer'>
       <div id='flexleft'>
 
+        {/* <FilteredTasks /> */}
         <ImportantTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />
-
-
         <ScheduledTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />
-
         <hr />
-
         <ProjectList projects={projects} getAllProjects={getAllProjects} setProjects={setProjects} getSpecificTasks={getSpecificTasks} showForm={showForm} />
-
         <CreateProject getAllProjects={getAllProjects} />
 
       </div>
