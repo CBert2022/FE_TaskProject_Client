@@ -1,9 +1,5 @@
 import { useRef } from "react";
 import axios from "axios";
-
-import { Link } from "react-router-dom";
-
-
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 
@@ -84,13 +80,13 @@ function ProjectListPage({ projects, setProjects, getAllProjects, getSpecificTas
                   onDragEnd={drop}
                   draggable  */>
 
-                  <Link onClick={() => {
+                  <div onClick={() => {
                     getSpecificTasks(project?._id)
                     showForm(project?._id)
                   }}>
 
                     <h3>{project?.title}</h3>
-                  </Link>
+                  </div>
 
                   <button className='push' onClick={() => deleteProject(project?._id)}  > Delete </button>
                 </div>

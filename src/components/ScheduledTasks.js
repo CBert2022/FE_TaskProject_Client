@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import moment from 'moment';
 
 function ScheduledTask({allTasks, deleteTask, getAllTasks}) {
     const [isShown, setIsShown] = useState();
@@ -19,9 +19,9 @@ function ScheduledTask({allTasks, deleteTask, getAllTasks}) {
               if (task.dueDate){
                 return (
                   <div className="TaskCard card" key={task._id} >
-                    <h3>SCHEDULED:{task.title}</h3>
-{/*                     <h3>{task.dueDate}</h3>
- */}                    <button className="push" onClick={()=>deleteTask(task._id)}  > Delete </button>
+                    <h3>{task.title}</h3>
+                    <h3>{moment(task.dueDate).format('dddd, MMMM Do YYYY, h:mm:ss a')}</h3>
+                   <button className="push" onClick={()=>deleteTask(task._id)}  > Delete </button>
                   </div>
                 );
               }

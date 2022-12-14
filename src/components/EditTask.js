@@ -12,8 +12,9 @@ function EditTask(props) {
    const [title, setTitle] = useState(props.singleTask.title);
    const [description, setDescription] = useState(props.singleTask.description);
    const [dueDate, setDueDate] = useState(props.singleTask.dueDate)
-   const [important, setImportant] = useState(false)
+   const [important, setImportant] = useState(props.singleTask.important)
    const [checked, setChecked] = useState(false)
+   const [open, setOpen] = useState(false);
 
   title && console.log("title", title)
    const handleSubmit = (e) => {
@@ -31,15 +32,17 @@ function EditTask(props) {
          setDueDate("");
          setImportant(false);
          setChecked(false);
+         props.setSingleTask("");
          props.getSpecificTasks(props.projectId)
        })
        .catch((error) => console.log(error));
    };
+   
  
 
    return (
-
-     <div className="AddProject">
+    <div id="edittasktransition">
+    <div className="AddProject">
      {props.singleTask && 
       <form onSubmit={handleSubmit}>
        <h2>Edit {props.singleTask.title}</h2>
@@ -74,20 +77,14 @@ function EditTask(props) {
            onChange={() => setImportant(!important)}
          />
 
-         <label htmlFor="checked">Done</label>
-         <input type="checkbox"
-           id="checked"
-           name="checked"
-           checked={checked}
-           onChange={() => setImportant(!checked)}
-         />
-
 
          <button type="submit" >Submit</button>
        </form>
      }
        
      </div>
+     </div>
+
    );
 
 }
