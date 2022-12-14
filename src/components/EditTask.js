@@ -31,6 +31,7 @@ function EditTask(props) {
          setDueDate("");
          setImportant(false);
          setChecked(false);
+         props.setSingleTask("");
          props.getSpecificTasks(props.projectId)
        })
        .catch((error) => console.log(error));
@@ -39,7 +40,7 @@ function EditTask(props) {
 
    return (
 
-     <div className="AddProject">
+    <div className="AddProject">
      {props.singleTask && 
       <form onSubmit={handleSubmit}>
        <h2>Edit {props.singleTask.title}</h2>
@@ -72,14 +73,6 @@ function EditTask(props) {
            name="important"
            checked={important}
            onChange={() => setImportant(!important)}
-         />
-
-         <label htmlFor="checked">Done</label>
-         <input type="checkbox"
-           id="checked"
-           name="checked"
-           checked={checked}
-           onChange={() => setImportant(!checked)}
          />
 
 

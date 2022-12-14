@@ -124,6 +124,11 @@ textarea {
   height: 58.77px;
 }
 
+.DoneCard {
+  background-color: lightgray;
+  text-decoration: line-through;
+  opacity: 50%;
+}
 
 #flexcontainer {
   
