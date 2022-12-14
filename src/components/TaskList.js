@@ -44,6 +44,7 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
         getSpecificTasks(projectId)
       })
       .catch((error) => console.log(error));
+    };
 
   const dragItem = useRef();
   const dragOverItem = useRef();
