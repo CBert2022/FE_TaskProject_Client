@@ -1,13 +1,14 @@
 body {
   margin: 0;
-  background-color: white;
+  background-color: #000008;
+  color: white;
 }
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
 a {
   list-style: none;
-  color: black;
+  color: white;
 }
 
 button {
@@ -15,7 +16,8 @@ button {
   margin: 10px;
   font-size: 15px;
   border-radius: 50px;
-  background-color: #EEFFE4;
+  background-color: #020A17;
+  color: white;
 }
 
 label {
@@ -29,19 +31,25 @@ textarea {
   padding: 10px;
   display: inline-block;
   margin: 10px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
 }
 
 .Navbar {
-  background: #1A5647;
+  background: #020A17;
   color: white;
   width: 100vw;
   margin-bottom: 15px;
-  padding: 5px;
+/*   padding: 5px; */
+border-bottom: 0.5px solid #156F6E;
+margin-right:0 ;
 }
 
-.Navbar li {
+.Navbar h1 {
+    padding-left: 20px;
   list-style: none;
-  color: white;
+  color:white;
   font-size: 24px;
   font-weight: 600;
 }
@@ -53,7 +61,7 @@ textarea {
   padding-left: 10px;
   margin-bottom: 3px;
   margin-left: 10px;
-  background: #89CBA3;
+  background: #0A3842;
   border-radius: 10px;
 }
 
@@ -85,12 +93,11 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #CAD2C5;
+  background-color: #030f22;
   margin: 0 auto;
   margin-bottom: 3px;
   width: 100%;
   margin-left: 0px;
-  padding-left: 10px;
 }
 
 /* .AddTask button,
@@ -99,19 +106,23 @@ textarea {
 } */
 
 .TaskCard {
-  background-color: #B1D6AB;
+  background-color: #062230;
+  border: 1px solid #156F6E;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  padding-left: 10px;
   margin-bottom: 3px;
   border-radius: 10px;
+  
+}
 
+.TaskCard h3 {
+ padding-left: 10px;
 }
 
 .ImportantCard {
-  background-color: #4FC491;
+  background-color: #156F6E;
   height: 58.77px;
 }
 
@@ -120,7 +131,7 @@ textarea {
 } */
 
 .ScheduledCard {
-  background-color: #79D1AB;
+  background-color: #0D454F;
   height: 58.77px;
 }
 
@@ -135,6 +146,10 @@ textarea {
 
 #flexright{
   width: 72vw;
+}
+
+#flexleft{
+  width: 28vw;
 }
 
 
@@ -177,4 +192,11 @@ textarea {
 #main {
   transition: margin-left .5s;
   padding: 20px;
+}
+
+.LoginPage,
+.SignupPage{
+  display: flex;
+  flex-direction: column;
+  padding-left: 30vw;
 }

@@ -5,12 +5,12 @@ import EditTask from "./EditTask";
 import QuickEntryTask from "./QuickEntryTask";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
 
-function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId, refresh }) {
+function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId }) {
 
   const [checked, setChecked] = useState(true)
   const [singleTask, setSingleTask] = useState(null);
@@ -22,27 +22,66 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
     console.log("task:", singleTask)
   }
 
+  const updateList = (copyListItems) => {
+    /* projects && setTimeout(() => { */
+    axios
+      .post(`${API_URL}/api/tasks/${projectId}/sort`, {  array: copyListItems })
+      .then(()=> {getSpecificTasks(projectId)})
+    /* }, 10) */
+  };
+
   const handleDoneSubmit = (e, task) => {
     console.log("EEEE",task)
     e.preventDefault();
     return axios
       .put(`${API_URL}/api/tasks/${task._id}/edit`, { done: !task.done })
       .then((res) => {
-        console.log("state", res)
-        // setChecked(!checked)
+        console.log("STATESTATE", res)
         getSpecificTasks(projectId)
       })
       .catch((error) => console.log(error));
   };
 
+  const dragItem = useRef();
+  const dragOverItem = useRef();
+  
+  const dragStart = (element, position) => {
+  console.log("TASKS: ", tasks)
+    dragItem.current = position;
+    console.log("DRAG START ",element.target);
+  };
+  const dragEnter = (element, position) => {
+    dragOverItem.current = position;
+  };
+  
+  let copyListItems = []
+
+  const drop = () => {
+    copyListItems = [...tasks]
+    // const copyListItems = JSON.parse(JSON.stringify(projects));
+    const dragItemContent = copyListItems[dragItem.current];
+    copyListItems.splice(dragItem.current, 1);
+    copyListItems.splice(dragOverItem.current, 0, dragItemContent);
+    console.log("copylistitems: ", copyListItems)
+    dragItem.current = null;
+    dragOverItem.current = null;
+    console.log("THIS IS THE ARRAY 2 ",copyListItems)
+    setTasks(copyListItems);
+    updateList(copyListItems)
+  };
 
   return (
 
     <div>
-      {tasks?.map((task) => {
+      {tasks?.map((task, i) => {
         return (
           <div key={task._id}>
-            <div className={`card ${task.done ? "ImportantCard" : ""}`} /* key={task._id} onDragStart={(elem) => dragStart(elem, i)} onDragEnter={(elem) => dragEnter(elem, i)} onDragEnd={drop} draggable */>
+            <div className={`TaskCard ${task.done ? "ImportantCard" : ""}`} 
+            key={task._id} 
+            onDragStart={(elem) => dragStart(elem, i)} 
+            onDragEnter={(elem) => dragEnter(elem, i)} 
+            onDragEnd={drop} 
+            draggable>
 
               <div onClick={(e) => {
                 handleClick(task)
@@ -70,27 +109,4 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
 
 export default TaskListPage;
 
-/*   const dragItem = useRef();
-  const dragOverItem = useRef();
- 
- const dragStart = (element, position) => {
-  console.log("TASKS: ", props.project.tasks)
-    dragItem.current = position;
-    console.log("DRAG START ",element.target);
-  };
-  const dragEnter = (element, position) => {
-    dragOverItem.current = position;
-  };
- 
-  const drop = () => {
-    let copyListItems = [...props.project.tasks]
-    // const copyListItems = JSON.parse(JSON.stringify(projects));
-    const dragItemContent = copyListItems[dragItem.current];
-    copyListItems.splice(dragItem.current, 1);
-    copyListItems.splice(dragOverItem.current, 0, dragItemContent);
-    dragItem.current = null;
-    dragOverItem.current = null;
-    props.setTasks(copyListItems);
-
-  }; */
 

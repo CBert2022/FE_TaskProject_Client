@@ -2,6 +2,8 @@ import ImportantTask from "../components/ImportantTasks";
 import ScheduledTask from "../components/ScheduledTasks";
 import ProjectList from "../components/ProjectList"
 import { useState, useEffect } from "react";
+import { AuthContext } from "../context/auth.context";
+import { useContext } from "react";
 import axios from "axios";
 import CreateProject from "../components/CreateProject";
 import TaskListPage from "../components/TaskList";
@@ -17,6 +19,8 @@ function HomePage() {
   const [allTasks, setAllTasks] = useState([]);
   const [projectId, setProjectId] = useState(null)
   const [taskId, setTaskId] = useState(null);
+
+  const { user } = useContext(AuthContext);
 
 
   const showForm = (id) => {
@@ -34,20 +38,15 @@ function HomePage() {
   };
 
   const getSpecificTasks = (id) => {
-    console.log("this is the project id: ", id)
-    console.log("getSpecificTasks")
-    axios
+    return axios
       .get(`${API_URL}/api/tasks/${id}`)
       .then((response) => {
-        /*         console.log("RESPONSEEEEEEEE", response.data) */
-        setTasks(response.data)
-      }).then((response) => {
-        console.log(tasks)
+        setTasks(response.data.tasks)
       })
       .catch((error) => console.log(error));
   }
 
-   
+
 
   const getAllTasks = () => {
     axios

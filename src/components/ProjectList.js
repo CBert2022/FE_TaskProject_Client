@@ -13,54 +13,52 @@ const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 function ProjectListPage({ projects, setProjects, getAllProjects, getSpecificTasks, showForm }) {
   // console.log("PROJECTS: ", projects)
 
-  const dragItem = useRef();
-  const dragOverItem = useRef();
-
-
-
-  const updateList = () => {
-    /* projects && setTimeout(() => { */
-    axios
-      .post(`${API_URL}/api/projects/sort`, { array: copyListItems })
-    /* }, 10) */
-  };
-
-
-
-  const dragStart = (element, position) => {
-    console.log("PROjECTS: ", projects)
-    dragItem.current = position;
-    // console.log("DRAG START ",element.target);
-  };
-
-  const dragEnter = (element, position) => {
-    // console.log("PROJECTS2", projects)
-    dragOverItem.current = position;
-    // console.log("DRAG END ",element.target);
-  };
-
-  let copyListItems = []
-
-  const drop = () => {
-    // console.log("PROJECTS3", projects)
-    copyListItems = [...projects]
-    // const copyListItems = JSON.parse(JSON.stringify(projects));
-    // console.log("COPY LIST ITEMS: ", copyListItems)
-    // console.log("DRAG ITEM", dragItem);
-    const dragItemContent = copyListItems[dragItem.current];
-    // console.log("DRAG ITEM CONTENT: ", dragItemContent)
-    copyListItems.splice(dragItem.current, 1);
-    copyListItems.splice(dragOverItem.current, 0, dragItemContent);
-    dragItem.current = null;
-    dragOverItem.current = null;
-    console.log("LIST: ", copyListItems)
-    setProjects(copyListItems)
-    console.log(copyListItems)
-    updateList()
-
-  };
+  /*   const dragItem = useRef();
+    const dragOverItem = useRef(); */
 
   const { user } = useContext(AuthContext);
+
+
+  /*    const updateList = (projects) => {
+      console.log("projects", projects)
+      axios
+        .post(`${API_URL}/api/projects/sort`, { array: projects })
+    };  */
+
+
+  /*   const dragStart = (element, position) => {
+      console.log("PROjECTS: ", projects)
+      dragItem.current = position;
+      // console.log("DRAG START ",element.target);
+    };
+  
+    const dragEnter = (element, position) => {
+      // console.log("PROJECTS2", projects)
+      dragOverItem.current = position;
+      // console.log("DRAG END ",element.target);
+    };
+  
+    let copyListItems = [null]
+  
+    const drop = () => {
+      // console.log("PROJECTS3", projects)
+      copyListItems = [...projects]
+      // const copyListItems = JSON.parse(JSON.stringify(projects));
+       console.log("COPY LIST ITEMS: ", copyListItems)
+      // console.log("DRAG ITEM", dragItem);
+      const dragItemContent = copyListItems[dragItem.current];
+      // console.log("DRAG ITEM CONTENT: ", dragItemContent)
+      copyListItems.splice(dragItem.current, 1);
+      copyListItems.splice(dragOverItem.current, 0, dragItemContent);
+      dragItem.current = null;
+      dragOverItem.current = null;
+      console.log("LIST: ", copyListItems)
+      const matches = copyListItems.filter((oneProject) => { return oneProject.createdBy === user._id })
+      console.log("MATCHES",matches)
+      setProjects(matches)
+      updateList(matches)
+    }; */
+
 
 
   const deleteProject = (id) => {
@@ -81,10 +79,10 @@ function ProjectListPage({ projects, setProjects, getAllProjects, getSpecificTas
               <div>
                 <div className="ProjectCard card"
                   key={i}
-                  onDragStart={(elem) => dragStart(elem, i)}
+/*                   onDragStart={(elem) => dragStart(elem, i)}
                   onDragEnter={(elem) => dragEnter(elem, i)}
                   onDragEnd={drop}
-                  draggable >
+                  draggable  */>
 
                   <Link onClick={() => {
                     getSpecificTasks(project?._id)
