@@ -9,13 +9,13 @@ const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 function EditTask(props) {
 
    const { isLoggedIn, user } = useContext(AuthContext);
-   const [title, setTitle] = useState("");
-   const [description, setDescription] = useState("");
-   const [dueDate, setDueDate] = useState("")
+   const [title, setTitle] = useState(props.singleTask.title);
+   const [description, setDescription] = useState(props.singleTask.description);
+   const [dueDate, setDueDate] = useState(props.singleTask.dueDate)
    const [important, setImportant] = useState(false)
    const [checked, setChecked] = useState(false)
 
-  
+  title && console.log("title", title)
    const handleSubmit = (e) => {
      e.preventDefault();
      const requestBody = { title, description, dueDate, projectId: props.projectId, important, createdBy: user._id, checked };
@@ -40,10 +40,9 @@ function EditTask(props) {
    return (
 
      <div className="AddProject">
-       <h3>Edit {props.singleTask.title}</h3>
-
-
-       <form onSubmit={handleSubmit}>
+     {props.singleTask && 
+      <form onSubmit={handleSubmit}>
+       <h2>Edit {props.singleTask.title}</h2>
          <label>Title:</label>
          <input
            type="text"
@@ -86,6 +85,8 @@ function EditTask(props) {
 
          <button type="submit" >Submit</button>
        </form>
+     }
+       
      </div>
    );
 
