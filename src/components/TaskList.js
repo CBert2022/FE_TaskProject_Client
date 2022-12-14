@@ -15,25 +15,25 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
   const [checked, setChecked] = useState(true)
   const [singleTask, setSingleTask] = useState(null);
 
-   const handleClick = (e) => {
- 
-     console.log("getchosenTask", e)
-     setSingleTask(e)
- 
-   }
+  const handleClick = (e) => {
 
-   const handleDoneSubmit = (e ,id) => {
+    console.log("getchosenTask", e)
+    setSingleTask(e)
+    console.log("task:", singleTask)
+  }
+
+  const handleDoneSubmit = (e, task) => {
+    console.log("EEEE",task)
     e.preventDefault();
-
-
-   return axios
-   .put(`${API_URL}/api/tasks/${id}/edit`, {done: !checked})
-   .then(() => {
-    setChecked(!checked);
-     getSpecificTasks(projectId)
-   })
-   .catch((error) => console.log(error));
-};
+    return axios
+      .put(`${API_URL}/api/tasks/${task._id}/edit`, { done: !task.done })
+      .then((res) => {
+        console.log("state", res)
+        // setChecked(!checked)
+        getSpecificTasks(projectId)
+      })
+      .catch((error) => console.log(error));
+  };
 
 
   return (
@@ -42,8 +42,7 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
       {tasks?.map((task) => {
         return (
           <div key={task._id}>
-          {console.log(task.done)}
-            <div className={`card ${task.done? "ImportantCard" : ""}`} /* key={task._id} onDragStart={(elem) => dragStart(elem, i)} onDragEnter={(elem) => dragEnter(elem, i)} onDragEnd={drop} draggable */>
+            <div className={`card ${task.done ? "ImportantCard" : ""}`} /* key={task._id} onDragStart={(elem) => dragStart(elem, i)} onDragEnter={(elem) => dragEnter(elem, i)} onDragEnd={drop} draggable */>
 
               <div onClick={(e) => {
                 handleClick(task)
@@ -51,16 +50,18 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
                 <h3>{task?.title}</h3>
               </div>
               <button className='push' onClick={() => deleteTask(task._id)}  > Delete </button>
-              <button onClick={(e)=> handleDoneSubmit(e, task._id)}> Done </button>
+              <button onClick={(e) => handleDoneSubmit(e, task)}> Done </button>
             </div>
+            {singleTask && task._id === singleTask._id && <EditTask projectId={projectId} refresh={getAllProjects} setTasks={setTasks} tasks={tasks} getSpecificTasks={getSpecificTasks} singleTask={singleTask} getAllTasks={getAllTasks} allTasks={allTasks} taskId={taskId} getChosenTask={getChosenTask} showChosenTaskForm={showChosenTaskForm} />}
           </div>
 
 
         )
+
       })}
       <div>
-        {projectId && <QuickEntryTask projectId={projectId} getSpecificTasks={getSpecificTasks}/>}
-        {singleTask && <EditTask projectId={projectId} refresh={getAllProjects} setTasks={setTasks} tasks={tasks} getSpecificTasks={getSpecificTasks} singleTask={singleTask} getAllTasks={getAllTasks} allTasks={allTasks} taskId={taskId} getChosenTask={getChosenTask} showChosenTaskForm={showChosenTaskForm}/>}
+        {projectId && <QuickEntryTask projectId={projectId} getSpecificTasks={getSpecificTasks} />}
+        {singleTask && <EditTask projectId={projectId} refresh={getAllProjects} setTasks={setTasks} tasks={tasks} getSpecificTasks={getSpecificTasks} singleTask={singleTask} getAllTasks={getAllTasks} allTasks={allTasks} taskId={taskId} getChosenTask={getChosenTask} showChosenTaskForm={showChosenTaskForm} />}
       </div>
 
     </div>

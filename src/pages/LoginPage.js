@@ -29,7 +29,7 @@ function LoginPage(props) {
       
       storeToken(response.data.authToken);
       authenticateUser();
-      navigate("/");
+      setTimeout(()=> navigate("/") ,100)
     })
     .catch((error) => {
       const errorDescription = error.response.data.message;
