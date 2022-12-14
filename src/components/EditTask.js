@@ -74,14 +74,6 @@ function EditTask(props) {
            onChange={() => setImportant(!important)}
          />
 
-         <label htmlFor="checked">Done</label>
-         <input type="checkbox"
-           id="checked"
-           name="checked"
-           checked={checked}
-           onChange={() => setImportant(!checked)}
-         />
-
 
          <button type="submit" >Submit</button>
        </form>

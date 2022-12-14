@@ -42,7 +42,7 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
       {tasks?.map((task) => {
         return (
           <div key={task._id}>
-            <div className={`card ${task.done ? "ImportantCard" : ""}`} /* key={task._id} onDragStart={(elem) => dragStart(elem, i)} onDragEnter={(elem) => dragEnter(elem, i)} onDragEnd={drop} draggable */>
+            <div className={`card ${task.done ? "DoneCard" : ""}`} /* key={task._id} onDragStart={(elem) => dragStart(elem, i)} onDragEnter={(elem) => dragEnter(elem, i)} onDragEnd={drop} draggable */>
 
               <div onClick={(e) => {
                 handleClick(task)
