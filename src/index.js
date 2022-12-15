@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { AuthProviderWrapper } from "./context/auth.context";
  
 import { BrowserRouter as Router } from "react-router-dom";
+
  
 ReactDOM.render(
   <AuthProviderWrapper>
