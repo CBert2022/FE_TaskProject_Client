@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
-
-function ImportantTask({allTasks, deleteTask, getAllTasks}) {
-    const [isShown, setIsShown] = useState(false);
+function ImportantTask({allTasks, deleteTask, getAllTasks, ImportantTaskIsShown, setImportantTaskIsShown}) {
 
       useEffect(() => {
         getAllTasks();
@@ -12,11 +9,11 @@ function ImportantTask({allTasks, deleteTask, getAllTasks}) {
       return (
         <>
         <div className="ImportantCard card">
-              <h2 onClick={() => setIsShown(!isShown)}>
+              <h2 onClick={() => setImportantTaskIsShown(!ImportantTaskIsShown)}>
                 Important Tasks
               </h2>
         </div>
-            {isShown && allTasks.map((task) => {
+            {/* {ImportantTaskIsShown && allTasks.map((task) => {
               if (task.important){
                 return (
                   <div className="TaskCard card" key={task._id} >
@@ -25,7 +22,7 @@ function ImportantTask({allTasks, deleteTask, getAllTasks}) {
                   </div>
                 );
               }
-            })}    
+            })}     */}
         </>
       );
 }

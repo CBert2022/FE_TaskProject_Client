@@ -3,7 +3,7 @@ import moment from 'moment';
 
 
 
-function FilteredTasks({allTasks, deleteTask } ) {
+function FilteredScheduledTasks({allTasks, deleteTask } ) {
 
  console.log(allTasks)
 
@@ -30,4 +30,4 @@ function FilteredTasks({allTasks, deleteTask } ) {
 
 }
 
-export default FilteredTasks;
+export default FilteredScheduledTasks;

@@ -20,6 +20,7 @@ function HomePage() {
   const [projectId, setProjectId] = useState(null)
   const [taskId, setTaskId] = useState(null);
   const [schedueldTaskIsShown, setSchedueldTaskIsShown] = useState(false);
+  const [ImportantTaskIsShown, setImportantTaskIsShown] = useState(false)
 
   const { user } = useContext(AuthContext);
 
@@ -76,8 +77,8 @@ function HomePage() {
   return (
     <div id='flexcontainer'>
       <div id='flexleft'>
-        <ImportantTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask}  />
-        <ScheduledTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} schedueldTaskIsShown={schedueldTaskIsShown} setSchedueldTaskIsShown={setSchedueldTaskIsShown}/>
+        <ImportantTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask}ImportantTaskIsShown={ImportantTaskIsShown} />
+        <ScheduledTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} schedueldTaskIsShown={schedueldTaskIsShown} setSchedueldTaskIsShown={setSchedueldTaskIsShown} setImportantTaskIsShown={setImportantTaskIsShown}/>
         <hr />
         <ProjectList projects={projects} getAllProjects={getAllProjects} setProjects={setProjects} getSpecificTasks={getSpecificTasks} showForm={showForm} />
         <CreateProject getAllProjects={getAllProjects} />

@@ -3,8 +3,7 @@ import QuickEntryTask from "./QuickEntryTask";
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import Confetti from './Confetti'; // Confetti Test
-import ScheduledTask from "./ScheduledTasks";
-import FilteredTasks from "./FilteredTasks";
+import FilteredScheduledTasks from "./FilteredScheduledTasks";
 
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
@@ -94,7 +93,7 @@ console.log(schedueldTaskIsShown);
   return (
     <>
       <div>
-      {schedueldTaskIsShown && <FilteredTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>}
+      {schedueldTaskIsShown && <FilteredScheduledTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>}
         {tasks?.map((task, i) => {
           return (
             <div>
