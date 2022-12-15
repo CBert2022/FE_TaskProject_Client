@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
-
-function ImportantTask({allTasks, deleteTask, getAllTasks, user}) {
-    const [isShown, setIsShown] = useState(false);
+function ImportantTask({allTasks, deleteTask, getAllTasks, ImportantTaskIsShown, setImportantTaskIsShown}) {
 
       useEffect(() => {
         getAllTasks();
@@ -16,8 +13,8 @@ function ImportantTask({allTasks, deleteTask, getAllTasks, user}) {
                 Important Tasks
               </h2>
         </div>
-            {isShown && allTasks.map((task) => {
-              if (task.createdBy === user._id && task.important){
+            {/* {ImportantTaskIsShown && allTasks.map((task) => {
+              if (task.important){
                 return (
                   <div className="TaskCard" key={task._id} >
                     {<h3>IMPORTANT:{task.title}</h3>}
@@ -25,7 +22,7 @@ function ImportantTask({allTasks, deleteTask, getAllTasks, user}) {
                   </div>
                 );
               }
-            })}    
+            })}     */}
         </>
       );
 }

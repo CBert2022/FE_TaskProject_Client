@@ -10,7 +10,7 @@ import 'animate.css';
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
 
-function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId, schedueldTaskIsShown }) {
+function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId, schedueldTaskIsShown, importantTaskisShown}) {
 
   const [isVisible, setIsVisible] = useState(false); // Confetti Test
   const [singleTask, setSingleTask] = useState(null);

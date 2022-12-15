@@ -21,6 +21,7 @@ function HomePage() {
   const [projectId, setProjectId] = useState(null)
   const [taskId, setTaskId] = useState(null);
   const [schedueldTaskIsShown, setSchedueldTaskIsShown] = useState(false);
+  const [ImportantTaskIsShown, setImportantTaskIsShown] = useState(false)
 
   const { user } = useContext(AuthContext);
 

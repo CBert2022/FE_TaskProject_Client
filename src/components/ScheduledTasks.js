@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import moment from 'moment';
 
 function ScheduledTask({allTasks, deleteTask, getAllTasks, setSchedueldTaskIsShown ,schedueldTaskSetIsShown}) {
 
