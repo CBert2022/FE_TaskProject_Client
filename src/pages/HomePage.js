@@ -94,7 +94,7 @@ useEffect(()=> {
         
         <hr className="space"/>
 
-{        <h3 className="projectFakeCard">projects</h3>}
+{        <h3 className="projectFakeCard">Projects</h3>}
         <ProjectList setImportantTaskIsShown={setImportantTaskIsShown} setSchedueldTaskIsShown={setSchedueldTaskIsShown} projects={projects} getAllProjects={getAllProjects} setProjects={setProjects} getSpecificTasks={getSpecificTasks} showForm={showForm} />
         <CreateProject getAllProjects={getAllProjects} />
       </div>
