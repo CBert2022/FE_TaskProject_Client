@@ -33,7 +33,7 @@ function EditTask(props) {
          setImportant(false);
          setChecked(false);
          props.setSingleTask("");
-         props.getSpecificTasks(props.projectId)
+         props.getAllTasks()
        })
        .catch((error) => console.log(error));
    };

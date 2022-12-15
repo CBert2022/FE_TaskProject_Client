@@ -26,7 +26,7 @@ function CreateProject({getAllProjects}) {
 
   return (
     <div className="ProjectCard card">
-      <h3>+</h3>
+      <h3>➤</h3>
 
       <form onSubmit={handleSubmit}>
         <input
