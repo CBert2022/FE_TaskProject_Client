@@ -195,7 +195,11 @@ margin-right:0 ;
 }
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 .card:hover{
-border: black 3px solid;
+border: white 3px solid;
+}
+
+.TaskCard:hover{
+border: white 3px solid;
 }
 
 .LoginPage,

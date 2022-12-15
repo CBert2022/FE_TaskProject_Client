@@ -1,25 +1,33 @@
+import React from "react";
+import moment from 'moment';
 
 
 
+function FilteredTasks({allTasks, deleteTask } ) {
 
-// function FilteredTasks({ScheduledTask}) {
+ console.log(allTasks)
+
+    return (
+        <>
+
+            { allTasks && allTasks.map((task) => {
+          
+              if (task.dueDate){
+                return (
+                  <div className="TaskCard card" key={task._id} >
+                    <h3>{task.title}</h3>
+                    <h3>{moment(task.dueDate).format('dddd, MMMM Do YYYY, h:mm:ss a')}</h3>
+                   <button className="push" onClick={()=>deleteTask(task._id)}  > Delete </button>
+                  </div>
+                );
+              }
+            })}
+         
+        </>
+    )
 
 
-//     return (
-//         <>
-//             <div className="ImportantCard card" onClick={() => {
-        
-//                   }}>
-//                 <h3>Important Tasks</h3>
-//             </div>
-//             <div  className="ScheduledCard card" onClick={() => {getSpecificTasks(taskId)}}>
-//                 <h3>Scheduled Tasks</h3>
-//             </div>
-//         </>
-//     )
 
+}
 
-
-// }
-
-// export default FilteredTasks;
+export default FilteredTasks;
