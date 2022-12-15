@@ -5,9 +5,9 @@ import { useEffect, useState, useRef } from "react";
 import Confetti from './Confetti'; // Confetti Test
 import FilteredScheduledTasks from "./FilteredScheduledTasks";
 import FilteredImportantTasks from "./FilteredImportantTasks";
+import 'animate.css';
 
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
-
 
 function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId, schedueldTaskIsShown, importantTaskIsShown}) {
 
@@ -39,7 +39,7 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
 
   const handleDoneSubmit = (e, task) => {
 
-    e.stopPropagation() 
+    e.stopPropagation()
 
     if (!task.done) {
       setIsVisible(true)
@@ -89,9 +89,9 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
   };
   importantTaskIsShown && console.log(importantTaskIsShown)
   return (
-    <>
   
       <div>
+      <h3 className="taskFakeCard animate__animated animate__fadeIn">Tasks</h3>
       {schedueldTaskIsShown && <FilteredScheduledTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>}
 
       {importantTaskIsShown && <FilteredImportantTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />}
@@ -100,7 +100,7 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
           
           return (
             <div>
-              <div className={`TaskCard ${task.done ? "DoneCard" : ""}`}
+              <div className={`TaskCard animate__animated animate__fadeIn ${task.done ? "DoneCard" : ""}`}
                 onClick={() => {
                   handleClick(task)
                 }}
@@ -113,13 +113,13 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
                 <div >
                   <h3>{task?.title}</h3>
                 </div>
-                <button className='push' onClick={() => deleteTask(task._id)}  > Delete </button>
+                <button className='push' onClick={(e) => deleteTask(e, task._id)}  > Delete </button>
                 <button onClick={(e) => { handleDoneSubmit(e, task) }}> Done </button>
                 {isVisible && <Confetti />}
 
               </div>
 
-              <div className="popup">
+              <div className="animate__animated animate__fadeIn">
 
                 {singleTask && task._id === singleTask._id && <EditTask projectId={projectId} refresh={getAllProjects} setTasks={setTasks} tasks={tasks} getSpecificTasks={getSpecificTasks} singleTask={singleTask} getAllTasks={getAllTasks} allTasks={allTasks} taskId={taskId} getChosenTask={getChosenTask} showChosenTaskForm={showChosenTaskForm} setSingleTask={setSingleTask} />}
 
@@ -134,7 +134,6 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
         </div>
 
       </div>
-    </>
   );
 }
 

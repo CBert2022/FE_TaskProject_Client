@@ -5,6 +5,7 @@ import { useContext } from "react";
 import axios from "axios";
 import CreateProject from "../components/CreateProject";
 import TaskListPage from "../components/TaskList";
+import 'animate.css';
 
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
@@ -56,7 +57,9 @@ useEffect(()=> {
       .catch((error) => console.log(error));
   }
 
-  const deleteTask = (id) => {
+  const deleteTask = (e, id) => {
+    e.stopPropagation() 
+
     axios
       .post(`${API_URL}/api/tasks/${id}/delete`)
       .then(() => getAllTasks())
@@ -80,11 +83,12 @@ useEffect(()=> {
 
 
   return (
-    <div id='flexcontainer'>
+    <div id='flexcontainer' className="animate__animated animate__fadeIn">
       <div id='flexleft'>
         <div className="ScheduledCard card" onClick={() => {setSchedueldTaskIsShown(!schedueldTaskIsShown);importantState();}}>Scheduled tasks</div>
         <div className="ImportantCard card" onClick={() => {setImportantTaskIsShown(!importantTaskIsShown);scheduleState();}}>Important tasks</div>
         <hr />
+{        <h3 className="projectFakeCard">projects</h3>}
         <ProjectList setImportantTaskIsShown={setImportantTaskIsShown} setSchedueldTaskIsShown={setSchedueldTaskIsShown} projects={projects} getAllProjects={getAllProjects} setProjects={setProjects} getSpecificTasks={getSpecificTasks} showForm={showForm} />
         <CreateProject getAllProjects={getAllProjects} />
       </div>
