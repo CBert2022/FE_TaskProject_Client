@@ -33,7 +33,7 @@ function ProjectListPage({ projects, setSchedueldTaskIsShown, setImportantTaskIs
               setImportantTaskIsShown(false)
             }}>
               <div>
-                <div className="ProjectCard card" style={{backgroundColor: selected === project._id ? "#0a3842a0" : ""}} key={i}>
+                <div className="ProjectCard card animate__animated animate__fadeIn" style={{backgroundColor: selected === project._id ? "#0a3842a0" : ""}} key={i}>
                   <div >
                     <h3>{project?.title}</h3>
                   </div>

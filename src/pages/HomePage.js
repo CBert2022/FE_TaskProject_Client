@@ -85,9 +85,15 @@ useEffect(()=> {
   return (
     <div id='flexcontainer' className="animate__animated animate__fadeIn">
       <div id='flexleft'>
-        <div className="ScheduledCard card" onClick={() => {setSchedueldTaskIsShown(!schedueldTaskIsShown);importantState();}}>Scheduled tasks</div>
-        <div className="ImportantCard card" onClick={() => {setImportantTaskIsShown(!importantTaskIsShown);scheduleState();}}>Important tasks</div>
-        <hr />
+        <div className="ImportantCard card" onClick={() => {setImportantTaskIsShown(!importantTaskIsShown);scheduleState();}}>
+          <h2>Important tasks</h2>
+        </div>
+        <div className="ScheduledCard card" onClick={() => {setSchedueldTaskIsShown(!schedueldTaskIsShown);importantState();}}>
+          <h2>Scheduled tasks</h2>
+        </div>
+        
+        <hr className="space"/>
+
 {        <h3 className="projectFakeCard">projects</h3>}
         <ProjectList setImportantTaskIsShown={setImportantTaskIsShown} setSchedueldTaskIsShown={setSchedueldTaskIsShown} projects={projects} getAllProjects={getAllProjects} setProjects={setProjects} getSpecificTasks={getSpecificTasks} showForm={showForm} />
         <CreateProject getAllProjects={getAllProjects} />
