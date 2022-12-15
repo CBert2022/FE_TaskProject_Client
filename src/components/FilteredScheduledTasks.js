@@ -14,7 +14,7 @@ function FilteredScheduledTasks({allTasks, deleteTask } ) {
           
               if (task.dueDate){
                 return (
-                  <div className="TaskCard card" key={task._id} >
+                  <div className="TaskCard" key={task._id} >
                     <h3>{task.title}</h3>
                     <h3>{moment(task.dueDate).format('dddd, MMMM Do YYYY, h:mm:ss a')}</h3>
                    <button className="push" onClick={()=>deleteTask(task._id)}  > Delete </button>

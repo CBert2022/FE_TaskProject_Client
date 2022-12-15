@@ -25,15 +25,15 @@ function CreateProject({getAllProjects}) {
   };
 
   return (
-    <div className="ProjectCard card">
-      <h3>➤</h3>
+    <div className="cardNoHover">
+      <h3>+</h3>
 
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="title"
           value={title}
-          placeholder='Add Prpject'
+          placeholder='Add Project'
           onChange={(e) => setTitle(e.target.value)}
         />
 

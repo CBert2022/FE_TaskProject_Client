@@ -3,9 +3,9 @@ import QuickEntryTask from "./QuickEntryTask";
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import Confetti from './Confetti'; // Confetti Test
-import FilteredScheduledTasks from "./FilteredScheduledTasks";
-import ImportantTask from "./ImportantTasks";
-import FilteredImportantTasks from "./FilteredImportantTasks";
+import ScheduledTask from "./ScheduledTasks";
+import FilteredTasks from "./FilteredTasks";
+import 'animate.css';
 
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
@@ -14,7 +14,7 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
 
   const [isVisible, setIsVisible] = useState(false); // Confetti Test
   const [singleTask, setSingleTask] = useState(null);
-console.log(schedueldTaskIsShown);
+  console.log(schedueldTaskIsShown);
 
   const handleClick = (e) => {
     console.log("getchosenTask", e)
@@ -27,20 +27,15 @@ console.log(schedueldTaskIsShown);
   }
 
   const updateList = (copyListItems) => {
-    /* projects && setTimeout(() => { */
     axios
       .post(`${API_URL}/api/tasks/${projectId}/sort`, { array: copyListItems })
       .then(() => { getSpecificTasks(projectId) })
-    /* }, 10) */
   };
 
-  /*   const handleEditSubmit = (e, singleTask) => {
-      if ( === singleTask._id)
-    } */
 
   const handleDoneSubmit = (e, task) => {
 
-    e.stopPropagation() 
+    e.stopPropagation()
 
     if (!task.done) {
       setIsVisible(true)
@@ -93,14 +88,13 @@ console.log(schedueldTaskIsShown);
     console.log("HERE", isVisible)
   }, [isVisible])
   return (
-    <>
       <div>
-      {schedueldTaskIsShown && <FilteredScheduledTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>}
-      {importantTaskisShown && <FilteredImportantTasks allTasks={allTasks}getAllTasks={getAllTasks} deleteTask={deleteTask} />}
+        <h3 className="taskFakeCard animate__animated animate__fadeIn">Tasks</h3>
+        {schedueldTaskIsShown && <FilteredTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />}
         {tasks?.map((task, i) => {
           return (
             <div>
-              <div className={`TaskCard ${task.done ? "DoneCard" : ""}`}
+              <div className={`TaskCard animate__animated animate__fadeIn ${task.done ? "DoneCard" : ""}`}
                 onClick={() => {
                   handleClick(task)
                 }}
@@ -110,21 +104,16 @@ console.log(schedueldTaskIsShown);
                 onDragEnd={drop}
                 draggable>
 
-                {/*  <button onClick={() => {
-                  handleClick(task)
-                  singleTask && task._id === singleTask._id && setShowEdit(true) 
-                }}> edit </button> */}
-
                 <div >
                   <h3>{task?.title}</h3>
                 </div>
-                <button className='push' onClick={() => deleteTask(task._id)}  > Delete </button>
+                <button className='push' onClick={(e) => deleteTask(e, task._id)}  > Delete </button>
                 <button onClick={(e) => { handleDoneSubmit(e, task) }}> Done </button>
                 {isVisible && <Confetti />}
 
               </div>
 
-              <div className="popup">
+              <div className="animate__animated animate__fadeIn">
 
                 {singleTask && task._id === singleTask._id && <EditTask projectId={projectId} refresh={getAllProjects} setTasks={setTasks} tasks={tasks} getSpecificTasks={getSpecificTasks} singleTask={singleTask} getAllTasks={getAllTasks} allTasks={allTasks} taskId={taskId} getChosenTask={getChosenTask} showChosenTaskForm={showChosenTaskForm} setSingleTask={setSingleTask} />}
 
@@ -139,7 +128,6 @@ console.log(schedueldTaskIsShown);
         </div>
 
       </div>
-    </>
   );
 }
 
