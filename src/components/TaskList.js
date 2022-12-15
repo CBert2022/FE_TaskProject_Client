@@ -3,15 +3,17 @@ import QuickEntryTask from "./QuickEntryTask";
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import Confetti from './Confetti'; // Confetti Test
+import ScheduledTask from "./ScheduledTasks";
+import FilteredTasks from "./FilteredTasks";
 
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
 
-function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId }) {
+function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId, schedueldTaskIsShown}) {
 
   const [isVisible, setIsVisible] = useState(false); // Confetti Test
   const [singleTask, setSingleTask] = useState(null);
-
+console.log(schedueldTaskIsShown);
 
   const handleClick = (e) => {
     console.log("getchosenTask", e)
@@ -81,6 +83,7 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
   return (
     <>
       <div>
+      {schedueldTaskIsShown && <FilteredTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>}
         {tasks?.map((task, i) => {
           return (
             <div key={task._id}>

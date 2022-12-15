@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import moment from 'moment';
 
-function ScheduledTask({allTasks, deleteTask, getAllTasks}) {
-    const [isShown, setIsShown] = useState();
+function ScheduledTask({allTasks, deleteTask, getAllTasks, setSchedueldTaskIsShown ,schedueldTaskSetIsShown}) {
+
 
       useEffect(() => {
         getAllTasks();
@@ -11,11 +11,11 @@ function ScheduledTask({allTasks, deleteTask, getAllTasks}) {
       return (
         <>
         <div className="ScheduledCard card">
-              <h2 onClick={() => setIsShown(!isShown)}>
+              <h2 onClick={() => setSchedueldTaskIsShown(!schedueldTaskSetIsShown)}>
                 Scheduled Tasks
               </h2>
         </div>
-        {isShown && allTasks.map((task) => {
+        {schedueldTaskSetIsShown && allTasks.map((task) => {
               if (task.dueDate){
                 return (
                   <div className="TaskCard card" key={task._id} >

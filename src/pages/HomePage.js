@@ -7,7 +7,6 @@ import { useContext } from "react";
 import axios from "axios";
 import CreateProject from "../components/CreateProject";
 import TaskListPage from "../components/TaskList";
-// import FilteredTasks from "../components/FilteredTasks";
 
 
 
@@ -20,9 +19,9 @@ function HomePage() {
   const [allTasks, setAllTasks] = useState([]);
   const [projectId, setProjectId] = useState(null)
   const [taskId, setTaskId] = useState(null);
+  const [schedueldTaskIsShown, setSchedueldTaskIsShown] = useState(false);
 
   const { user } = useContext(AuthContext);
-
 
   const showForm = (id) => {
     setProjectId(id)
@@ -46,6 +45,8 @@ function HomePage() {
       })
       .catch((error) => console.log(error));
   }
+
+
 
 
 
@@ -75,10 +76,8 @@ function HomePage() {
   return (
     <div id='flexcontainer'>
       <div id='flexleft'>
-
-        {/* <FilteredTasks /> */}
-        <ImportantTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />
-        <ScheduledTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />
+        <ImportantTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask}  />
+        <ScheduledTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} schedueldTaskIsShown={schedueldTaskIsShown} setSchedueldTaskIsShown={setSchedueldTaskIsShown}/>
         <hr />
         <ProjectList projects={projects} getAllProjects={getAllProjects} setProjects={setProjects} getSpecificTasks={getSpecificTasks} showForm={showForm} />
         <CreateProject getAllProjects={getAllProjects} />
@@ -86,7 +85,7 @@ function HomePage() {
       </div>
 
       <div id='flexright'>
-        <TaskListPage deleteTask={deleteTask} getSpecificTasks={getSpecificTasks} tasks={tasks} setTasks={setTasks} projectId={projectId} getAllTasks={getAllTasks} allTasks={allTasks} taskId={taskId} showChosenTaskForm={showChosenTaskForm} />
+        <TaskListPage deleteTask={deleteTask} getSpecificTasks={getSpecificTasks} tasks={tasks} setTasks={setTasks} projectId={projectId} getAllTasks={getAllTasks} allTasks={allTasks} taskId={taskId} showChosenTaskForm={showChosenTaskForm} schedueldTaskIsShown={schedueldTaskIsShown} setSchedueldTaskIsShown={setSchedueldTaskIsShown} />
 
       </div>
     </div>
