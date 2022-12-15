@@ -197,11 +197,6 @@ margin-right:0 ;
 .card:hover{
 border: black 3px solid;
 }
-/* #main {
-  transition: margin-left .5s;
-  padding: 20px;
-}
-
 
 .LoginPage,
 .SignupPage{
@@ -209,6 +204,13 @@ border: black 3px solid;
   flex-direction: column;
   padding-left: 30vw;
 }
+
+/* #main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+
 
 .AddProject {
   animation: popup 4s ease-in;
