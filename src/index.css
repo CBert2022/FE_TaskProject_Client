@@ -253,3 +253,9 @@ h3.taskFakeCard {
   margin-left: 10px;
   padding-left: 20px;
 }
+
+.icon{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}

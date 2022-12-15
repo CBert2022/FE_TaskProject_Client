@@ -10,7 +10,7 @@ function FilteredImportantTasks ({allTasks, deleteTask }){
             return (
               <div className="TaskCard animate__animated animate__fadeIn" key={task._id} >
                 {<h3>{task.title}</h3>}
-                <button className="push" onClick={()=>deleteTask(task._id)}  > Delete </button>
+                <button className="push" onClick={(e)=>deleteTask(e, task._id)}  > Delete </button>
               </div>
             );
           }

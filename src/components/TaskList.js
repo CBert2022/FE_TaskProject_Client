@@ -75,7 +75,6 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
 
   const drop = () => {
     copyListItems = [...tasks]
-    // const copyListItems = JSON.parse(JSON.stringify(projects));
     const dragItemContent = copyListItems[dragItem.current];
     copyListItems.splice(dragItem.current, 1);
     copyListItems.splice(dragOverItem.current, 0, dragItemContent);
@@ -112,9 +111,13 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
                 onDragEnd={drop}
                 draggable>
 
-                <div >
+                <div className="icon">
                   <h3>{task?.title}</h3>
+                  <h3>✎</h3>
                 </div>
+                <div>
+                </div>
+
                 <button className='push' onClick={(e) => deleteTask(e, task._id)}  > Delete </button>
                 <button onClick={(e) => { handleDoneSubmit(e, task) }}> Done </button>
                 {isVisible && <Confetti />}
