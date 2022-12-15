@@ -7,7 +7,7 @@ import CreateProject from "../components/CreateProject";
 import TaskListPage from "../components/TaskList";
 import 'animate.css';
 
-const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
 
 function HomePage() {

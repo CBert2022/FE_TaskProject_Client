@@ -3,7 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
  
-const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005"
  
 function QuickEntryTask(props) {
   const { isLoggedIn, user } = useContext(AuthContext);
