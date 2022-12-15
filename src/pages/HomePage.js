@@ -7,6 +7,7 @@ import { useContext } from "react";
 import axios from "axios";
 import CreateProject from "../components/CreateProject";
 import TaskListPage from "../components/TaskList";
+import 'animate.css';
 
 
 
@@ -59,7 +60,9 @@ function HomePage() {
       .catch((error) => console.log(error));
   }
 
-  const deleteTask = (id) => {
+  const deleteTask = (e, id) => {
+    e.stopPropagation() 
+
     axios
       .post(`${API_URL}/api/tasks/${id}/delete`)
       .then(() => getAllTasks())
@@ -74,11 +77,12 @@ function HomePage() {
 
 
   return (
-    <div id='flexcontainer'>
+    <div id='flexcontainer' className="animate__animated animate__fadeIn">
       <div id='flexleft'>
-        <ImportantTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask}  />
+        <ImportantTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} user={user} />
         <ScheduledTask allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} schedueldTaskIsShown={schedueldTaskIsShown} setSchedueldTaskIsShown={setSchedueldTaskIsShown}/>
         <hr />
+{        <h3 className="projectFakeCard">projects</h3>}
         <ProjectList projects={projects} getAllProjects={getAllProjects} setProjects={setProjects} getSpecificTasks={getSpecificTasks} showForm={showForm} />
         <CreateProject getAllProjects={getAllProjects} />
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
-function ImportantTask({allTasks, deleteTask, getAllTasks}) {
+function ImportantTask({allTasks, deleteTask, getAllTasks, user}) {
     const [isShown, setIsShown] = useState(false);
 
       useEffect(() => {
@@ -11,17 +11,17 @@ function ImportantTask({allTasks, deleteTask, getAllTasks}) {
 
       return (
         <>
-        <div className="ImportantCard card">
-              <h2 onClick={() => setIsShown(!isShown)}>
+        <div className="ImportantCard card" onClick={() => setIsShown(!isShown)}>
+              <h2>
                 Important Tasks
               </h2>
         </div>
             {isShown && allTasks.map((task) => {
-              if (task.important){
+              if (task.createdBy === user._id && task.important){
                 return (
-                  <div className="TaskCard card" key={task._id} >
+                  <div className="TaskCard" key={task._id} >
                     {<h3>IMPORTANT:{task.title}</h3>}
-                    <button className="push" onClick={()=>deleteTask(task._id)}  > Delete </button>
+                    <button className="push" onClick={(e)=>deleteTask(e, task._id)}  > Delete </button>
                   </div>
                 );
               }

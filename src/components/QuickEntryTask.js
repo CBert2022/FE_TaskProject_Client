@@ -27,7 +27,7 @@ function QuickEntryTask(props) {
  
   return (
     <div className="TaskCard">
-      <h3>➤</h3>
+      <h3>+</h3>
  
       <form onSubmit={handleSubmit}>
         <input
