@@ -7,7 +7,7 @@ import FilteredScheduledTasks from "./FilteredScheduledTasks";
 import FilteredImportantTasks from "./FilteredImportantTasks";
 import 'animate.css';
 
-const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005"
 
 function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId, schedueldTaskIsShown, importantTaskIsShown}) {
 

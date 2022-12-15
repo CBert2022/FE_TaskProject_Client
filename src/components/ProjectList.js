@@ -3,7 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useContext, useState } from "react";
 
-const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005"
 
 function ProjectListPage({ projects, setSchedueldTaskIsShown, setImportantTaskIsShown, getAllProjects, getSpecificTasks, showForm }) {
 
