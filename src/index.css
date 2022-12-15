@@ -3,9 +3,11 @@ body {
   background-color: #000008;
   color: white;
 }
+
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+
 a {
   list-style: none;
   color: white;
@@ -36,7 +38,7 @@ textarea {
   color: white;
 }
 
-input::placeholder{
+input::placeholder {
   color: white;
 }
 
@@ -45,15 +47,14 @@ input::placeholder{
   color: white;
   width: 100vw;
   margin-bottom: 15px;
-/*   padding: 5px; */
-border-bottom: 0.5px solid #156F6E;
-margin-right:0 ;
+  border-bottom: 0.5px solid #156F6E;
+  margin-right: 0;
 }
 
 .Navbar h1 {
-    padding-left: 20px;
+  padding-left: 20px;
   list-style: none;
-  color:white;
+  color: white;
   font-size: 24px;
   font-weight: 600;
 }
@@ -82,7 +83,7 @@ margin-right:0 ;
   border-radius: 10px;
 }
 
-.projectFakeCard{
+.projectFakeCard {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -95,7 +96,7 @@ margin-right:0 ;
   border-radius: 3px;
 }
 
-.taskFakeCard{
+.taskFakeCard {
   margin-top: 0;
   display: flex;
   flex-wrap: wrap;
@@ -137,11 +138,11 @@ h3.taskFakeCard {
   margin-bottom: 3px;
   border-radius: 10px;
   margin-left: 0;
-  
+
 }
 
 .TaskCard h3 {
- padding-left: 10px;
+  padding-left: 10px;
 }
 
 .ImportantCard {
@@ -163,33 +164,42 @@ h3.taskFakeCard {
 }
 
 #flexcontainer {
-  
+
   display: flex;
   flex-direction: row;
   gap: 30px;
   width: 99.8vw;
 }
 
-#flexright{
+#flexright {
   width: 72vw;
 }
 
-#flexleft{
+#flexleft {
   width: 28vw;
 }
 
 
 .sidenav {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
+  height: 100%;
+  /* 100% Full-height */
+  width: 0;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Stay on top */
+  top: 0;
+  /* Stay at the top */
   left: 0;
-  background-color: rgb(123, 255, 226); /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  background-color: rgb(123, 255, 226);
+  /* Black*/
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 60px;
+  /* Place content 60px from the top */
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in the sidenav */
 }
 
 /* The navigation menu links */
@@ -201,6 +211,7 @@ h3.taskFakeCard {
   display: block;
   transition: 0.3s;
 }
+
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
   color: #f1f1f1;
@@ -214,17 +225,18 @@ h3.taskFakeCard {
   font-size: 36px;
   margin-left: 50px;
 }
+
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-.card:hover{
-border: white 2px solid;
+.card:hover {
+  border: white 2px solid;
 }
 
-.TaskCard:hover{
-border: white 1px solid;
+.TaskCard:hover {
+  border: white 1px solid;
 }
 
 .LoginPage,
-.SignupPage{
+.SignupPage {
   display: flex;
   flex-direction: column;
   padding-left: 30vw;
@@ -234,4 +246,10 @@ border: white 1px solid;
   display: flex;
   justify-content: space-evenly;
   background-color: #030f22;
+}
+
+.space{
+  margin-top: 20px;
+  margin-left: 10px;
+  padding-left: 20px;
 }

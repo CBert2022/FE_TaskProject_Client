@@ -91,10 +91,12 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
   return (
   
       <div>
-      <h3 className="taskFakeCard animate__animated animate__fadeIn">Tasks</h3>
+      
+      {importantTaskIsShown && <FilteredImportantTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />}
+
       {schedueldTaskIsShown && <FilteredScheduledTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>}
 
-      {importantTaskIsShown && <FilteredImportantTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />}
+      <h3 className="taskFakeCard animate__animated animate__fadeIn">Tasks</h3>
 
         {tasks?.map((task, i) => {
           
