@@ -60,7 +60,10 @@ function ProjectListPage({ projects, setProjects, getAllProjects, getSpecificTas
   const deleteProject = (id) => {
     axios
       .post(`${API_URL}/api/projects/${id}/delete`)
-      .then(() => getAllProjects())
+      .then(() => {
+        getAllProjects() 
+        showForm(null) 
+      })
       .catch((error) => console.log(error));
   }
 
@@ -70,7 +73,10 @@ function ProjectListPage({ projects, setProjects, getAllProjects, getSpecificTas
       {projects?.filter((oneProject) => { return oneProject.createdBy === user._id })
         .map((project, i) => {
           return (
-            <div key={i}>
+            <div key={i} onClick={() => {
+              getSpecificTasks(project?._id)
+              showForm(project?._id)
+            }}>
 
               <div>
                 <div className="ProjectCard card"
@@ -80,10 +86,7 @@ function ProjectListPage({ projects, setProjects, getAllProjects, getSpecificTas
                   onDragEnd={drop}
                   draggable  */>
 
-                  <div onClick={() => {
-                    getSpecificTasks(project?._id)
-                    showForm(project?._id)
-                  }}>
+                  <div >
 
                     <h3>{project?.title}</h3>
                   </div>
