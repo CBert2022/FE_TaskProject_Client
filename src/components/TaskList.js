@@ -3,18 +3,22 @@ import QuickEntryTask from "./QuickEntryTask";
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import Confetti from './Confetti'; // Confetti Test
-import ScheduledTask from "./ScheduledTasks";
-import FilteredTasks from "./FilteredTasks";
+import FilteredScheduledTasks from "./FilteredScheduledTasks";
+import FilteredImportantTasks from "./FilteredImportantTasks";
 import 'animate.css';
 
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
+function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId, schedueldTaskIsShown, importantTaskIsShown}) {
 
-function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId, schedueldTaskIsShown, importantTaskisShown}) {
+  useEffect(()=> {
+    allTasks && allTasks.map((task) => {
+        console.log(task.important)
+    })
+},[allTasks])
 
   const [isVisible, setIsVisible] = useState(false); // Confetti Test
   const [singleTask, setSingleTask] = useState(null);
-  console.log(schedueldTaskIsShown);
 
   const handleClick = (e) => {
     console.log("getchosenTask", e)
@@ -83,15 +87,17 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
     updateList(copyListItems)
 
   };
-
-  useEffect(() => {
-    console.log("HERE", isVisible)
-  }, [isVisible])
+  importantTaskIsShown && console.log(importantTaskIsShown)
   return (
+  
       <div>
-        <h3 className="taskFakeCard animate__animated animate__fadeIn">Tasks</h3>
-        {schedueldTaskIsShown && <FilteredTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />}
+      <h3 className="taskFakeCard animate__animated animate__fadeIn">Tasks</h3>
+      {schedueldTaskIsShown && <FilteredScheduledTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>}
+
+      {importantTaskIsShown && <FilteredImportantTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />}
+
         {tasks?.map((task, i) => {
+          
           return (
             <div>
               <div className={`TaskCard animate__animated animate__fadeIn ${task.done ? "DoneCard" : ""}`}
