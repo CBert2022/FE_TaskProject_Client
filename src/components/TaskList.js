@@ -4,17 +4,21 @@ import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import Confetti from './Confetti'; // Confetti Test
 import FilteredScheduledTasks from "./FilteredScheduledTasks";
-import ImportantTask from "./ImportantTasks";
 import FilteredImportantTasks from "./FilteredImportantTasks";
 
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
 
-function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId, schedueldTaskIsShown, importantTaskisShown}) {
+function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId, schedueldTaskIsShown, importantTaskIsShown}) {
+
+  useEffect(()=> {
+    allTasks && allTasks.map((task) => {
+        console.log(task.important)
+    })
+},[allTasks])
 
   const [isVisible, setIsVisible] = useState(false); // Confetti Test
   const [singleTask, setSingleTask] = useState(null);
-console.log(schedueldTaskIsShown);
 
   const handleClick = (e) => {
     console.log("getchosenTask", e)
@@ -27,16 +31,11 @@ console.log(schedueldTaskIsShown);
   }
 
   const updateList = (copyListItems) => {
-    /* projects && setTimeout(() => { */
     axios
       .post(`${API_URL}/api/tasks/${projectId}/sort`, { array: copyListItems })
       .then(() => { getSpecificTasks(projectId) })
-    /* }, 10) */
   };
 
-  /*   const handleEditSubmit = (e, singleTask) => {
-      if ( === singleTask._id)
-    } */
 
   const handleDoneSubmit = (e, task) => {
 
@@ -88,16 +87,17 @@ console.log(schedueldTaskIsShown);
     updateList(copyListItems)
 
   };
-
-  useEffect(() => {
-    console.log("HERE", isVisible)
-  }, [isVisible])
+  importantTaskIsShown && console.log(importantTaskIsShown)
   return (
     <>
+  
       <div>
       {schedueldTaskIsShown && <FilteredScheduledTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>}
-      {importantTaskisShown && <FilteredImportantTasks allTasks={allTasks}getAllTasks={getAllTasks} deleteTask={deleteTask} />}
+
+      {importantTaskIsShown && <FilteredImportantTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />}
+
         {tasks?.map((task, i) => {
+          
           return (
             <div>
               <div className={`TaskCard ${task.done ? "DoneCard" : ""}`}
@@ -109,11 +109,6 @@ console.log(schedueldTaskIsShown);
                 onDragEnter={(elem) => dragEnter(elem, i)}
                 onDragEnd={drop}
                 draggable>
-
-                {/*  <button onClick={() => {
-                  handleClick(task)
-                  singleTask && task._id === singleTask._id && setShowEdit(true) 
-                }}> edit </button> */}
 
                 <div >
                   <h3>{task?.title}</h3>

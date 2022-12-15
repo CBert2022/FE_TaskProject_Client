@@ -4,15 +4,14 @@ import moment from 'moment';
 
 
 function FilteredScheduledTasks({allTasks, deleteTask } ) {
-
- console.log(allTasks)
+  const today = new Date();
 
     return (
         <>
 
             { allTasks && allTasks.map((task) => {
           
-              if (task.dueDate){
+              if (task.dueDate === today){
                 return (
                   <div className="TaskCard card" key={task._id} >
                     <h3>{task.title}</h3>
