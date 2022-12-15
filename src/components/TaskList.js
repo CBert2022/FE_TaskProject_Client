@@ -4,11 +4,13 @@ import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import Confetti from './Confetti'; // Confetti Test
 import FilteredScheduledTasks from "./FilteredScheduledTasks";
+import ImportantTask from "./ImportantTasks";
+import FilteredImportantTasks from "./FilteredImportantTasks";
 
 const API_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
 
 
-function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId, schedueldTaskIsShown}) {
+function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId, schedueldTaskIsShown, importantTaskisShown}) {
 
   const [isVisible, setIsVisible] = useState(false); // Confetti Test
   const [singleTask, setSingleTask] = useState(null);
@@ -94,6 +96,7 @@ console.log(schedueldTaskIsShown);
     <>
       <div>
       {schedueldTaskIsShown && <FilteredScheduledTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>}
+      {importantTaskisShown && <FilteredImportantTasks allTasks={allTasks}getAllTasks={getAllTasks} deleteTask={deleteTask} />}
         {tasks?.map((task, i) => {
           return (
             <div>
