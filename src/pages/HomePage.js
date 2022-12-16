@@ -25,10 +25,6 @@ function HomePage() {
     setProjectId(id)
   }
 
-/* useEffect(()=> {
-  console.log(importantTaskIsShown)
-},[importantTaskIsShown]) */
-
   const showChosenTaskForm = (id) => {
     setTaskId(id)
   }
