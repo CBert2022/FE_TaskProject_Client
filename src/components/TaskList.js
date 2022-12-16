@@ -53,9 +53,7 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
   const dragOverItem = useRef();
 
   const dragStart = (element, position) => {
-    console.log("TASKS: ", tasks)
     dragItem.current = position;
-    console.log("DRAG START ", element.target);
   };
   const dragEnter = (element, position) => {
     dragOverItem.current = position;
