@@ -1,7 +1,7 @@
 import EditTask from "./EditTask";
 import QuickEntryTask from "./QuickEntryTask";
 import axios from "axios";
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import Confetti from './Confetti'; // Confetti Test
 import FilteredScheduledTasks from "./FilteredScheduledTasks";
 import FilteredImportantTasks from "./FilteredImportantTasks";
@@ -11,23 +11,15 @@ const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005"
 
 function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId, schedueldTaskIsShown, importantTaskIsShown, user}) {
 
-  useEffect(()=> {
-    allTasks && allTasks.map((task) => {
-        console.log(task.important)
-    })
-},[allTasks])
-
   const [isVisible, setIsVisible] = useState(false); // Confetti Test
   const [singleTask, setSingleTask] = useState(null);
 
   const handleClick = (e) => {
-    console.log("getchosenTask", e)
     if (singleTask && e._id === singleTask._id) {
       setSingleTask(null)
     } else {
       setSingleTask(e)
     }
-    console.log("task:", singleTask)
   }
 
   const updateList = (copyListItems) => {
@@ -48,12 +40,10 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
       }, 1000)
     }
 
-    console.log("EEEE", task)
     e.preventDefault();
     return axios
       .put(`${API_URL}/api/tasks/${task._id}/edit`, { done: !task.done })
-      .then((res) => {
-        console.log("STATESTATE", res)
+      .then(() => {
         getSpecificTasks(projectId)
       })
       .catch((error) => console.log(error));
@@ -78,15 +68,12 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
     const dragItemContent = copyListItems[dragItem.current];
     copyListItems.splice(dragItem.current, 1);
     copyListItems.splice(dragOverItem.current, 0, dragItemContent);
-    console.log("copylistitems: ", copyListItems)
     dragItem.current = null;
     dragOverItem.current = null;
-    console.log("THIS IS THE ARRAY 2 ", copyListItems)
     setTasks(copyListItems);
     updateList(copyListItems)
 
   };
-  importantTaskIsShown && console.log(importantTaskIsShown)
   return (
   
       <div>

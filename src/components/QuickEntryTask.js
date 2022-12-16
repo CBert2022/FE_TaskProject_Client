@@ -24,7 +24,6 @@ function QuickEntryTask(props) {
       .catch((error) => console.log(error));
   };
  
- 
   return (
     <div className="TaskCard">
       <h3>+</h3>
@@ -43,6 +42,5 @@ function QuickEntryTask(props) {
     </div>
   );
 }
-
  
 export default QuickEntryTask;

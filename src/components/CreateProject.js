@@ -7,7 +7,7 @@ const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005"
  
 function CreateProject({getAllProjects}) {
 
-  const { isLoggedIn, user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [title, setTitle] = useState("");
 
   const handleSubmit = (e) => {
@@ -16,7 +16,7 @@ function CreateProject({getAllProjects}) {
     const requestBody = { title, createdBy: user._id };
     return axios
       .post(`${API_URL}/api/projects`, requestBody)
-      .then((response) => {
+      .then(() => {
         // Reset the state
         setTitle("");
         getAllProjects()

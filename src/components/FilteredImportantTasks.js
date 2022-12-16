@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 function FilteredImportantTasks ({allTasks, deleteTask, user }){
 
-   console.log("here!!")
     return  <>
             <h3 className="taskFakeCard">Important Tasks</h3>
         {allTasks && allTasks.map((task) => {

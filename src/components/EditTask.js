@@ -1,7 +1,7 @@
-import { useState, useParams } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import moment from "moment"
 import 'animate.css';
 
@@ -11,14 +11,13 @@ const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005"
 
 function EditTask(props) {
 
-    const { isLoggedIn, user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [title, setTitle] = useState(props.singleTask.title);
     const [description, setDescription] = useState(props.singleTask.description);
     const [dueDate, setDueDate] = useState(props.singleTask.dueDate)
     const [important, setImportant] = useState(props.singleTask.important)
     const [checked, setChecked] = useState(false)
 
-    title && console.log("title", title)
     const handleSubmit = (e) => {
         e.preventDefault();
         const requestBody = { title, description, dueDate, projectId: props.projectId, important, createdBy: user._id, checked };
@@ -28,7 +27,6 @@ function EditTask(props) {
             .put(`${API_URL}/api/tasks/${props.singleTask._id}/edit`, requestBody)
             .then(() => {
                 // Reset the state
-                console.log("hello")
                 setTitle("");
                 setDescription("");
                 setDueDate("");
