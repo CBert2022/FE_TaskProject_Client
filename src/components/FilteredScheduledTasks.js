@@ -1,19 +1,12 @@
 import React from "react";
 import moment from 'moment';
 
-
-
 function FilteredScheduledTasks({allTasks, deleteTask, user } ) {
-
 
     return (
         <>
         <h3 className="taskFakeCard">Scheduled Tasks</h3>
             { allTasks && allTasks.map((task) => {
-
-              console.log(task)
-              console.log(user)
-          
               if (task.dueDate && task.createdBy === user._id){
                 return (
                   <div className="TaskCard animate__animated animate__fadeIn" key={task._id} >
@@ -28,7 +21,6 @@ function FilteredScheduledTasks({allTasks, deleteTask, user } ) {
             <hr />
         </>
     )
-
 }
 
 export default FilteredScheduledTasks;
