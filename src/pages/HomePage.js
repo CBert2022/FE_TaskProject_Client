@@ -100,7 +100,7 @@ useEffect(()=> {
       </div>
 
       <div id='flexright'>
-        <TaskListPage deleteTask={deleteTask} getSpecificTasks={getSpecificTasks} tasks={tasks} setTasks={setTasks} projectId={projectId} getAllTasks={getAllTasks} allTasks={allTasks} taskId={taskId} showChosenTaskForm={showChosenTaskForm} schedueldTaskIsShown={schedueldTaskIsShown} setSchedueldTaskIsShown={setSchedueldTaskIsShown} importantTaskIsShown={importantTaskIsShown} setImportantTaskIsShown={setImportantTaskIsShown}/>
+        <TaskListPage deleteTask={deleteTask} getSpecificTasks={getSpecificTasks} tasks={tasks} setTasks={setTasks} projectId={projectId} getAllTasks={getAllTasks} allTasks={allTasks} taskId={taskId} showChosenTaskForm={showChosenTaskForm} schedueldTaskIsShown={schedueldTaskIsShown} setSchedueldTaskIsShown={setSchedueldTaskIsShown} importantTaskIsShown={importantTaskIsShown} setImportantTaskIsShown={setImportantTaskIsShown} user={user}/>
 
       </div>
     </div>

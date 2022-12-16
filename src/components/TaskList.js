@@ -9,7 +9,7 @@ import 'animate.css';
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005"
 
-function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId, schedueldTaskIsShown, importantTaskIsShown}) {
+function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, getSpecificTasks, projectId, getAllTasks, showChosenTaskForm, getChosenTask, taskId, schedueldTaskIsShown, importantTaskIsShown, user}) {
 
   useEffect(()=> {
     allTasks && allTasks.map((task) => {
@@ -91,9 +91,9 @@ function TaskListPage({ getAllProjects, deleteTask, allTasks, tasks, setTasks, g
   
       <div>
       
-      {importantTaskIsShown && <FilteredImportantTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} />}
+      {importantTaskIsShown && <FilteredImportantTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} user={user} />}
 
-      {schedueldTaskIsShown && <FilteredScheduledTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask}/>}
+      {schedueldTaskIsShown && <FilteredScheduledTasks allTasks={allTasks} getAllTasks={getAllTasks} deleteTask={deleteTask} user={user}/>}
 
       <h3 className="taskFakeCard animate__animated animate__fadeIn">Tasks</h3>
 
