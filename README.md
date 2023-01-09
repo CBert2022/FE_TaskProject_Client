@@ -1,7 +1,6 @@
-# Welcome to Taskmanager - everything you need to plan you projects.
+# Welcome to Taskmanager - everything you need to plan you projects
 
 This is the final project of the full stack web development bootcamp form Ironhack.
-It was created 9 weeks after coding my frist line.
 
 ## Tech Stack
 
